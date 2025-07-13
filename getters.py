@@ -7,7 +7,7 @@ import pypdf, os
 DOWNLOAD_DIR = 'downloaded'
 
 
-def get_school_convoc(id: str, type: Literal['fco', 'fp', 'fi'] = "fp") -> int:
+def get_school_document(id: str, type: Literal['fco', 'fp', 'fi'] = "fp") -> int:
 
     if type not in ['fco', 'fp', 'fi', 'fc']:
         return "Please enter a valid type. ('fco' OR 'fp' OR 'fi')"
