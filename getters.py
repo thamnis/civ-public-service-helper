@@ -1,10 +1,10 @@
-from requests import get, session
+from requests import session
 from bs4 import BeautifulSoup
 from typing import Literal
 import pypdf, os
 
 
-DOWNLOAD_DIR = 'i-downloaded'
+DOWNLOAD_DIR = 'downloaded'
 
 
 def get_school_convoc(id: str, type: Literal['fco', 'fp', 'fi'] = "fp") -> int:
@@ -28,6 +28,48 @@ def get_school_convoc(id: str, type: Literal['fco', 'fp', 'fi'] = "fp") -> int:
         raise SSLe
 
     return 0
+
+
+def get_result(matricule: str, exam: Literal["bac", "bepc"]):
+    RESULT_URL_INDEX = f"https://itdeco.ci/examens/resultat/{exam}/redis/index.php"
+    RESULT_URL_DEST = f"https://itdeco.ci/examens/resultat/{exam}/redis/resultat.php"
+
+    s = session()
+    g = s.get(RESULT_URL_INDEX)
+    if g.status_code == 404:
+        return 404
+
+    csrf_token = BeautifulSoup(g.content, "html.parser").find("input", attrs={"name": "csrf_token"}).get("value")
+
+    p = s.post(RESULT_URL_DEST, {"matricule": matricule, "csrf_token": csrf_token})
+
+    soup = BeautifulSoup(p.content, "html.parser")
+
+    status = soup.find("div").find("strong").get_text()
+
+    info = soup.find_all("span", attrs={"class": "info-value"})
+    
+    lname = info[1].get_text()
+    fname = info[2].get_text()
+    mention = info[3].get_text()
+    serie = info[4].get_text()
+    pts = info[5].get_text()
+    is_admit = None
+
+    if status == "réfusé":
+        is_admit = False
+    elif status == "admis":
+        is_admit = True
+
+    return {
+        "matricule": matricule,
+        "lname": lname,
+        "fname": fname,
+        "mention": mention,
+        "serie": serie,
+        "pts": pts,
+        "is_admit": is_admit
+    }
 
 
 def get_bts_convoc(matricule):
