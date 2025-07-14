@@ -1,18 +1,46 @@
-from requests import session
+"""
+getters.py
+
+Ce module contient des fonctions pour récupérer des informations sur les sites
+web officiels Ivoiriens (BAC, BEPC, BTS). Il permet de :
+
+- Télécharger des convocations (BAC, BEPC, BTS).
+- Récupérer les résultats d'examens.
+- Extraire des informations à partir de fichiers PDF de convocations.
+- Générer les chemins vers les fichiers PDF locaux.
+
+Auteur : Oskhane Boya Gueï (thamnis)
+Projet : civ-public-service-helper (MIT License)
+Date : Juillet 2025
+"""
+
+from requests import Session
 from bs4 import BeautifulSoup
 from typing import Literal
 import pypdf, os
 
 
-DOWNLOAD_DIR = 'downloaded'
+DOWNLOAD_DIR = 'downloaded' # À modifier si nécessaire.
 
 
 def get_school_document(id: str, type: Literal['fco', 'fp', 'fi'] = "fp") -> int:
+    """
+    Télécharge un document de convocation pour un candidat aux examens scolaires (BAC ou BEPC).
 
+    Args:
+        id (str): Identifiant unique du candidat.
+        type (Literal['fco', 'fp', 'fi']): Type de document (par défaut "fp").
+            - 'fco' : Fiche de convocation
+            - 'fp' : Fiche de préinscription
+            - 'fi' : Fiche d'inscriprtion
+
+    Returns:
+        int: 0 si succès, sinon code HTTP d'erreur.
+    """
     if type not in ['fco', 'fp', 'fi', 'fc']:
         return "Please enter a valid type. ('fco' OR 'fp' OR 'fi')"
         
-    conv_session = session()
+    conv_session = Session()
     url = f"http://agce.exam-deco.org/edit/fiche-candidature-bac-bepc/?codefiche={type}&codetype=of&codedm="
 
     try:
@@ -31,10 +59,20 @@ def get_school_document(id: str, type: Literal['fco', 'fp', 'fi'] = "fp") -> int
 
 
 def get_result(matricule: str, exam: Literal["bac", "bepc"]):
+    """
+    Récupère les résultats d'examen pour un candidat à partir du site de la DECO.
+
+    Args:
+        matricule (str): Matricule du candidat.
+        exam (Literal["bac", "bepc"]): Type d'examen.
+
+    Returns:
+        dict or int: Un dictionnaire contenant les résultats, ou 404 si non trouvé.
+    """
     RESULT_URL_INDEX = f"https://itdeco.ci/examens/resultat/{exam}/redis/index.php"
     RESULT_URL_DEST = f"https://itdeco.ci/examens/resultat/{exam}/redis/resultat.php"
 
-    s = session()
+    s = Session()
     g = s.get(RESULT_URL_INDEX)
     if g.status_code == 404:
         return 404
@@ -73,9 +111,18 @@ def get_result(matricule: str, exam: Literal["bac", "bepc"]):
 
 
 def get_bts_convoc(matricule):
+    """
+    Télécharge la convocation BTS à partir du site officiel du MESRS.
+
+    Args:
+        matricule (str): Matricule du candidat.
+
+    Returns:
+        None
+    """
     root_url = "https://bts.mesrs-ci.net/"
     deep_page = f"{root_url}/candidat"
-    s = session()
+    s = Session()
     g = s.post(url, {"matricule": matricule})
     soup = BeautifulSoup(g.content, "html.parser")
 
@@ -88,13 +135,36 @@ def get_bts_convoc(matricule):
 
 
 def get_pdf_path(sid: str, type: Literal['fco', 'fp', 'fi']):
+    """
+    Renvoie le chemin d'accès à un fichier PDF déjà téléchargé.
+
+    Args:
+        sid (str): Identifiant du candidat.
+        type (Literal['fco', 'fp', 'fi']): Type de formation.
+
+    Returns:
+        str: Chemin absolu vers le fichier PDF.
+    """
     if type not in ['fco', 'fp', 'fi', 'fc']:
         raise "Please enter a valid type. ('fco' OR 'fp' OR 'fi')"
     return os.path.join(DOWNLOAD_DIR, type, f'{type}_{sid}.pdf')
 
 
 def get_infos(pdf_path):
+    """
+    Extrait les informations utiles à partir d’un fichier PDF de convocation.
 
+    Args:
+        pdf_path (str): Chemin vers le fichier PDF.
+
+    Returns:
+        dict: Un dictionnaire contenant les informations extraites :
+            - dates (dict)
+            - origin (str)
+            - table_number (str)
+            - school (str)
+            - city (str)
+    """
     pdf = pypdf.PdfReader(pdf_path)
 
     content = pdf.pages[0].extract_text()
@@ -143,4 +213,13 @@ def get_infos(pdf_path):
 
 
 def get_location(id: str):
+    """
+    [À implémenter] Récupère la localisation d’un centre à partir de ID l'élève.
+
+    Args:
+        id (str): Identifiant de l'élève.
+
+    Returns:
+        None
+    """
     pass
