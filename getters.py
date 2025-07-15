@@ -4,10 +4,17 @@ getters.py
 Ce module contient des fonctions pour récupérer des informations sur les sites
 web officiels Ivoiriens (BAC, BEPC, BTS). Il permet de :
 
-- Télécharger des convocations (BAC, BEPC, BTS).
-- Récupérer les résultats d'examens.
-- Extraire des informations à partir de fichiers PDF de convocations.
-- Générer les chemins vers les fichiers PDF locaux.
+    - Télécharger des convocations (BAC, BEPC, BTS).
+    - Récupérer les résultats d'examens.
+    - Extraire des informations à partir de fichiers PDF de convocations.
+    - Générer les chemins vers les fichiers PDF locaux.
+
+Fonctions à ajouter :
+
+    - Verification de l'existance et de l'intégrité d'un fichier avant de 
+      télécharger et de remplacer un fichier.
+    - La fonction de localisation des centre d'examen est toujours à écrire.
+    - Ajouter dans get_infos() des informations sur le candiadat.
 
 Auteur : Oskhane Boya Gueï (thamnis)
 Projet : civ-public-service-helper (MIT License)
@@ -47,7 +54,11 @@ def get_school_document(id: str, type: Literal['fco', 'fp', 'fi'] = "fp") -> int
         buffer = conv_session.get(url+id, verify=False)
         if buffer.status_code == 200:
             filetype = buffer.headers["Content-Type"].split('/')[1]
-            with open(f'{type}_{id}.{filetype}', "wb") as f:
+
+            docs_dir = os.path.join(DOWNLOAD_DIR, type)
+            os.makedirs(docs_dir, exist_ok=True)
+
+            with open(os.path.join(docs_dir, f'{type}_{id}.{filetype}'), "wb") as f:
                 f.write(buffer.content)
         else:
             print(f"Connection error : {buffer.status_code}")
@@ -121,16 +132,18 @@ def get_bts_convoc(matricule):
         None
     """
     root_url = "https://bts.mesrs-ci.net/"
-    deep_page = f"{root_url}/candidat"
+    deep_page = f"{root_url}/convocation/candidat"
     s = Session()
-    g = s.post(url, {"matricule": matricule})
+    g = s.post(deep_page, {"matricule": matricule})
     soup = BeautifulSoup(g.content, "html.parser")
 
     student_id = soup.find("input", attrs={"name": "id"}).get("value")
 
     pdf_request = s.post(f"{root_url}/convocation.pdf", {"id": student_id})
 
-    with open(f"convoc-{matricule}.pdf", "wb") as f:
+    bts_convoc_dir = os.path.join(DOWNLOAD_DIR, 'bts-convoc')
+    os.makedirs(bts_convoc_dir, exist_ok=True)
+    with open(os.path.join(bts_convoc_dir, f"convoc-{matricule}.pdf"), "wb") as f:
         f.write(pdf_request.content)
 
 
@@ -147,7 +160,15 @@ def get_pdf_path(sid: str, type: Literal['fco', 'fp', 'fi']):
     """
     if type not in ['fco', 'fp', 'fi', 'fc']:
         raise "Please enter a valid type. ('fco' OR 'fp' OR 'fi')"
-    return os.path.join(DOWNLOAD_DIR, type, f'{type}_{sid}.pdf')
+    down_dir_content = os.listdir(DOWNLOAD_DIR)
+    if type in down_dir_content:
+        docs = os.listdir(os.path.join(DOWNLOAD_DIR, type))
+        if f'{type}_{sid}.pdf' in docs:
+            return os.path.join(DOWNLOAD_DIR, type, f'{type}_{sid}.pdf')
+        else:
+            raise BaseException(f'{type}_{sid}.pdf not found.')
+    else:
+        raise BaseException(f'{DOWNLOAD_DIR}/{type}/ not found.')
 
 
 def get_infos(pdf_path):
