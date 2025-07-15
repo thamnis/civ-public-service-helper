@@ -27,7 +27,7 @@ from typing import Literal
 import pypdf, os
 
 
-DOWNLOAD_DIR = 'downloaded' # À modifier si nécessaire.
+DOWNLOAD_DIR = 'downloads' # À modifier si nécessaire.
 
 
 def get_school_document(id: str, type: Literal['fco', 'fp', 'fi'] = "fp") -> int:
