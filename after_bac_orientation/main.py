@@ -1,5 +1,4 @@
-from scrappers import get_page
-from func import table_to_csv_string
+from func import table_to_csv_string, get_page
 import os
 
 URLs = {
