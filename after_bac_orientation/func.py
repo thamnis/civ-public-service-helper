@@ -1,17 +1,13 @@
 import re
 from io import StringIO
 import pandas as pd
+import csv
 from bs4 import BeautifulSoup
 from requests import get, post
 
 def get_page(url):
     g = get(url)
     return BeautifulSoup(g.content, "html.parser").find("table")
-
-import re
-import pandas as pd
-from bs4 import BeautifulSoup
-from io import StringIO
 
 def clean_text(text):
     """Nettoie le texte : supprime \n, \r, et réduit les espaces multiples."""
@@ -28,7 +24,7 @@ def extract_link_or_text_or_code(cell: BeautifulSoup):
 
     return clean_text(cell.get_text())
 
-def table_to_csv_string(table_tag):
+def table_to_csv_string(table_tag) -> str:
     """Convertit une balise <table> en CSV compact sous forme de string avec URLs quand disponibles."""
     if not table_tag:
         raise ValueError("❌ Aucun élément <table> fourni.")
@@ -48,7 +44,7 @@ def table_to_csv_string(table_tag):
     df.to_csv(output, index=False)
     return output.getvalue()
 
-def get_sectors_and_infos(code_eta: str):
+def get_sectors_and_infos(code_eta: str) -> tuple[dict, str]:
     p = post("https://bac.mesrs-ci.net/liste-filiere-etablissement", data={"etablissement_id": code_eta})
     soup = BeautifulSoup(p.content, "html.parser")
     box = soup.find("div", attrs={"class": "card shadow-lg p-4 animate__animated animate__fadeIn"})
@@ -64,5 +60,55 @@ def get_sectors_and_infos(code_eta: str):
         "scho-amount": infos[7].get_text(strip=True).split(':')[-1].strip(),
     }
     sectors = table_to_csv_string(box.find("table"))
-    infos_and_sectors = data, sectors
-    return infos_and_sectors
+    return data, sectors
+
+def merge_infos_to_csv(csv_input, csv_output) -> None:
+    # Opening previous csv file in reading mode
+    with open(csv_input, "r", encoding="utf-8") as f:
+        csv_reader = csv.reader(f)
+        
+        # Extracting the header
+        header = next(csv_reader)
+
+        # Extracting values
+        input_rows = [row for row in csv_reader]
+        
+        # extendind header
+        header.extend(['sigle', 'commune', 'location', 'phone', 'email', 'website', 'subs_fee', 'scho_amount', "sectors"])
+
+        # Opening output file in write mode
+        with open(csv_output, "w", encoding="utf-8") as f:
+            csv_writer = csv.writer(f)
+            # Writing header in the output file
+            csv_writer.writerow(header)
+            
+            # Writing values in the output file
+            for row in input_rows:
+                supplement = get_sectors_and_infos(row[-1])
+                row.extend(list(supplement[0].values()))
+                row.append(list(supplement[1].split("\n")))
+                csv_writer.writerow(row)
+
+def normalize_csv(csv_input) -> None:
+    # Opening previous csv file in reading mode
+    with open(csv_input, "r", encoding="utf-8") as f:
+        csv_reader = csv.reader(f)
+        
+        # Extracting the header
+        header = next(csv_reader)
+
+        # Extracting values
+        input_rows = [row for row in csv_reader]
+        
+        # Applying some normalization on the headers
+        care_header = []
+        for title in header.copy():
+            title = title.lower().replace(' ', '_').replace('\'', '_')
+            if title == "liste_des_filieres".lower():
+                header[header.index("LISTE DES FILIERES")] = "code_eta"
+            care_header.append(title)
+
+    with open(csv_input, "w", encoding="utf-8") as f:
+        csv_writer = csv.writer(f)
+        csv_writer.writerow(care_header)
+        csv_writer.writerows(input_rows)
