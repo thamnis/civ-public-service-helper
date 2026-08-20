@@ -23,7 +23,7 @@ Date : Juillet 2025
 
 from requests import Session
 from bs4 import BeautifulSoup
-from typing import Literal
+from typing import Literal, Optional
 import pypdf, os
 
 
@@ -69,17 +69,23 @@ def get_school_document(id: str, type: Literal['fco', 'fp', 'fi'] = "fp") -> int
     return 0
 
 
-def get_result(matricule: str, exam: Literal["bac", "bepc"]):
+def get_result(matricule: str, exam: Literal["bac", "bepc", "bts"], birthdate: Optional[str] = None):
     """
-    Récupère les résultats d'examen pour un candidat à partir du site de la DECO.
+    Récupère les résultats d'examen pour un candidat (BAC, BEPC ou BTS).
 
     Args:
-        matricule (str): Matricule du candidat.
-        exam (Literal["bac", "bepc"]): Type d'examen.
+        matricule (str): Matricule du candidat (ou identifiant BTS pour le BTS).
+        exam (Literal["bac", "bepc", "bts"]): Type d'examen.
+        birthdate (str, optional): Date de naissance requise pour l'examen BTS (ex: "2007-01-16" ou "16/01/2007").
 
     Returns:
-        dict or int: Un dictionnaire contenant les résultats, ou 404 si non trouvé.
+        dict or int: Un dictionnaire contenant les résultats, ou 404/code d'erreur si non trouvé.
     """
+    if exam == "bts":
+        if not birthdate:
+            raise ValueError("Le paramètre 'birthdate' est obligatoire pour consulter les résultats du BTS.")
+        return get_bts_result(matricule, birthdate)
+
     RESULT_URL_INDEX = f"https://itdeco.ci/examens/resultat/{exam}/redis/index.php"
     RESULT_URL_DEST = f"https://itdeco.ci/examens/resultat/{exam}/redis/resultat.php"
 
@@ -119,6 +125,22 @@ def get_result(matricule: str, exam: Literal["bac", "bepc"]):
         "pts": pts,
         "is_admit": is_admit
     }
+
+
+def get_bts_result(matricule: str, birthdate: str, timeout: int = 15) -> dict:
+    """
+    Récupère les résultats du BTS à partir du site officiel du MESRS.
+
+    Args:
+        matricule (str): Matricule du candidat ou identifiant BTS (ex: "12345678A" ou "BTS2026000000").
+        birthdate (str): Date de naissance du candidat (ex: "2000-01-01", "01/01/2000").
+        timeout (int): Délai d'attente maximum en secondes.
+
+    Returns:
+        dict: Dictionnaire contenant le statut d'admission et les détails du candidat.
+    """
+    from bts_result.scraper import get_bts_result as _get_bts_result
+    return _get_bts_result(matricule, birthdate, timeout=timeout)
 
 
 def get_bts_convoc(matricule):

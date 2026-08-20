@@ -58,11 +58,19 @@ from getters import get_school_document
 get_school_document("12345678A", type="fco")  # type: 'fp', 'fi', 'fco'
 ```
 
-### Exemple : Consulter un résultat
+### Exemple : Consulter un résultat (BAC, BEPC ou BTS)
 ```python
-from getters import get_result
-result = get_result("12345678A", exam="bac")
-print(result)
+from getters import get_result, get_bts_result
+
+# BAC ou BEPC
+result_bac = get_result("12345678A", exam="bac")
+print(result_bac)
+
+# BTS (nécessite matricule ou numéro BTS + date de naissance)
+result_bts = get_bts_result("12345678A", birthdate="2000-01-01")
+# Ou via get_result :
+# result_bts = get_result("12345678A", exam="bts", birthdate="2000-01-01")
+print(result_bts)
 ```
 
 ### Exemple : Lire des infos dans un PDF
@@ -79,7 +87,8 @@ print(infos)
 | Fonction | Description |
 |---------|-------------|
 | `get_school_document(id, type)` | Télécharge la convocation BAC/BEPC. |
-| `get_result(matricule, exam)` | Récupère le résultat d'examen (BAC ou BEPC). |
+| `get_result(matricule, exam, birthdate)` | Récupère le résultat d'examen (BAC, BEPC ou BTS). |
+| `get_bts_result(matricule, birthdate)` | Récupère et structure le résultat d'un candidat au BTS. |
 | `get_bts_convoc(matricule)` | Télécharge la convocation BTS (fonction expérimentale). |
 | `get_infos(pdf_path)` | Extrait les données essentielles depuis une convocation PDF. |
 | `get_pdf_path(sid, type)` | Génère le chemin local vers un PDF téléchargé. |
