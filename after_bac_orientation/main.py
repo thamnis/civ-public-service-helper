@@ -1,25 +1,110 @@
-from func import table_to_csv_string, get_page, merge_infos_to_csv, normalize_csv
+"""
+after_bac_orientation/main.py
+
+Point d'entrée principal pour tester et exécuter les outils d'orientation post-BAC (bac.mesrs-ci.net).
+"""
+
 import os
+import sys
+import json
+import argparse
+from typing import Dict, Any
 
-URLs = {
-    "home": "https://bac.mesrs-ci.net/",
-    "list-univ-priv": "https://bac.mesrs-ci.net/offres/ets-prives",
-    "ranking-bts": "https://bac.mesrs-ci.net/classement/bts2022",
-    "ranking-college": "https://bac.mesrs-ci.net/classement/grdes-ecoles",
-    "ranking-university": "https://bac.mesrs-ci.net/classement/grdes-ecoles",
-    "guide-orientation": "https://bac.mesrs-ci.net/classement/grdes-ecoles",
-    "verif-perso_data": "https://bac.mesrs-ci.net/classement/grdes-ecoles"
-}
+try:
+    from .scraper import (
+        get_bac_orientation_concours,
+        get_bac_orientation_concours_admissibles,
+        check_bac_orientation_payment,
+        simulate_bac_orientation,
+        get_bac_etablissement_sectors,
+    )
+except ImportError:
+    from scraper import (
+        get_bac_orientation_concours,
+        get_bac_orientation_concours_admissibles,
+        check_bac_orientation_payment,
+        simulate_bac_orientation,
+        get_bac_etablissement_sectors,
+    )
 
-tables = ["list-univ-priv", "ranking-bts", "ranking-college", "ranking-university"]
+# Assure l'affichage correct des caractères accentués sous Windows
+if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except AttributeError:
+        pass
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Scraper et utilitaires d'orientation post-BAC (https://bac.mesrs-ci.net)"
+    )
+    parser.add_argument("--concours", action="store_true", help="Lister tous les concours d'orientation spéciaux")
+    parser.add_argument("--admissibles", type=str, help="ID du concours dont afficher les admissibles (ex: 20693)")
+    parser.add_argument("--payment", type=str, help="Vérifier le statut de paiement pour un matricule BAC")
+    parser.add_argument("--simulate", type=str, help="Simuler l'orientation pour un matricule BAC")
+    parser.add_argument("--sectors", type=str, help="Code établissement dont afficher les filières")
+    parser.add_argument("--save-json", type=str, help="Sauvegarder le résultat dans un fichier JSON")
+
+    args = parser.parse_args()
+
+    # 1. Liste des concours
+    if args.concours:
+        print("🏛️ CONCOURS D'ORIENTATION POST-BAC (MESRS)")
+        print("=" * 65)
+        res = get_bac_orientation_concours()
+        if res.get("status") == "success":
+            for c in res.get("concours", []):
+                print(f"• [ID: {c['id']}] {c['title']} 👉 {c['url']}")
+        else:
+            print(f"⚠️ {res.get('message')}")
+        return
+
+    # 2. Admissibles à un concours
+    if args.admissibles:
+        print(f"📋 CANDIDATS ADMISSIBLES AU CONCOURS #{args.admissibles}")
+        print("=" * 65)
+        res = get_bac_orientation_concours_admissibles(args.admissibles)
+        if res.get("status") == "success":
+            print(f"🎓 Titre : {res.get('title')}")
+            print(f"👥 Total : {res.get('count')} admissible(s)\n")
+            for cand in res.get("admissibles", [])[:20]:
+                print(f"  {cand['rang']}. {cand['nom_prenoms']}")
+            if res.get("count", 0) > 20:
+                print(f"\n  ... et {res.get('count') - 20} autre(s) candidat(s).")
+        else:
+            print(f"⚠️ {res.get('message')}")
+        return
+
+    # 3. Vérification de paiement
+    if args.payment:
+        print(f"💳 VÉRIFICATION PAIEMENT ORIENTATION BAC ({args.payment})")
+        print("=" * 65)
+        res = check_bac_orientation_payment(args.payment)
+        if res.get("status") == "success":
+            print("✅ Paiement enregistré avec succès !")
+        else:
+            print(f"⚠️ {res.get('message')}")
+        return
+
+    # 4. Simulation
+    if args.simulate:
+        print(f"🎯 SIMULATEUR D'ORIENTATION BAC ({args.simulate})")
+        print("=" * 65)
+        res = simulate_bac_orientation(args.simulate)
+        print(res.get("message"))
+        return
+
+    # 5. Filières établissement
+    if args.sectors:
+        print(f"🏫 FILIÈRES ÉTABLISSEMENT ({args.sectors})")
+        print("=" * 65)
+        res = get_bac_etablissement_sectors(args.sectors)
+        print(res)
+        return
+
+    parser.print_help()
+
+
 if __name__ == "__main__":
-    OUTPUT_PATH = os.path.join("output")
-    os.makedirs(OUTPUT_PATH, exist_ok=True)
-    for table in tables:
-        fileprefix = f"{table}"
-        with open(os.path.join(OUTPUT_PATH, fileprefix+".csv"), "w+", encoding="utf-8") as c:
-            c.write(table_to_csv_string(get_page(URLs[table])))
-        
-        normalize_csv(os.path.join(OUTPUT_PATH, fileprefix+".csv"))
-        if "list-univ-priv" in fileprefix:
-            merge_infos_to_csv(os.path.join(OUTPUT_PATH, fileprefix+".csv"), os.path.join(OUTPUT_PATH, fileprefix+"-full.csv"))
+    main()

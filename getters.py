@@ -416,6 +416,38 @@ def get_mesrs_announcements() -> dict:
     return _news()
 
 
+def get_bac_orientation_concours() -> dict:
+    """
+    Récupère la liste des concours d'orientation spéciaux post-BAC (https://bac.mesrs-ci.net/orientation/concours).
+    """
+    from after_bac_orientation.scraper import get_bac_orientation_concours as _concours
+    return _concours()
+
+
+def get_bac_orientation_concours_admissibles(concours_id: str) -> dict:
+    """
+    Récupère la liste officielle des candidats admissibles classés par rang pour un concours post-BAC.
+    """
+    from after_bac_orientation.scraper import get_bac_orientation_concours_admissibles as _admissibles
+    return _admissibles(concours_id)
+
+
+def check_bac_orientation_payment(matricule: str) -> dict:
+    """
+    Vérifie le statut de paiement des frais d'orientation post-BAC d'un bachelier (https://bac.mesrs-ci.net).
+    """
+    from after_bac_orientation.scraper import check_bac_orientation_payment as _payment
+    return _payment(matricule)
+
+
+def simulate_bac_orientation(matricule: str) -> dict:
+    """
+    Simule les filières et affectations possibles pour un bachelier selon ses notes.
+    """
+    from after_bac_orientation.scraper import simulate_bac_orientation as _sim
+    return _sim(matricule)
+
+
 def get_pdf_path(sid: str, type: Literal['fco', 'fp', 'fi']):
     """
     Renvoie le chemin d'accès à un fichier PDF déjà téléchargé.

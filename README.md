@@ -180,6 +180,10 @@ Le projet est organisé en sous-modules spécialisés, chacun disposant de sa pr
 | `get_bts_statistics()` | Récupère les statistiques nationales de la session BTS (taux de réussite, inscrits, centres). |
 | `get_bts_filieres(category)` | Récupère la liste des 33 filières industrielles et tertiaires du BTS. |
 | `get_bts_convoc(matricule)` | Télécharge la convocation BTS. |
+| `get_bac_orientation_concours()` | Récupère la liste des concours d'orientation spéciaux post-BAC (`bac.mesrs-ci.net`). |
+| `get_bac_orientation_concours_admissibles(concours_id)` | Récupère la liste classée des admissibles pour un concours post-BAC. |
+| `check_bac_orientation_payment(matricule)` | Vérifie le statut de paiement des frais d'orientation post-BAC. |
+| `simulate_bac_orientation(matricule)` | Simule l'affectation et les filières accessibles pour un bachelier. |
 | `get_infos(pdf_path)` | Extrait les données essentielles depuis une convocation PDF. |
 | `get_pdf_path(sid, type)` | Génère le chemin local vers un PDF téléchargé. |
 | `get_location(id)` | *(à implémenter)* |
