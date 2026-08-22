@@ -148,6 +148,7 @@ Le projet est organisé en sous-modules spécialisés, chacun disposant de sa pr
 
 | Sous-module | Plateforme / Service | Description & Documentation |
 |---|---|---|
+| [`mesrs_services/`](mesrs_services/) | `inscription.mesrs-ci.net` | Vérification de paiement étudiant, catalogue DEXCO et annonces officielles MESRS. Voir le [README du module](mesrs_services/README.md). |
 | [`sigfne_documents/`](sigfne_documents/) | `agfne.sigfne.net` | Téléchargement des reçus de préinscription et fiches de cursus scolaire. Voir le [README du module](sigfne_documents/README.md). |
 | [`seconde_orientation/`](seconde_orientation/) | `orientation.mendob.ci` | Scraping d'identité, établissement d'accueil, série et téléchargement de fiches PDF 2nde. Voir le [README du module](seconde_orientation/README.md). |
 | [`sixieme_affectation/`](sixieme_affectation/) | `affectation.mendob.ci` | Scraping d'identité, d'établissement et téléchargement de fiches PDF 6ème. Voir le [README du module](sixieme_affectation/README.md). |
@@ -162,6 +163,9 @@ Le projet est organisé en sous-modules spécialisés, chacun disposant de sa pr
 | Fonction | Description |
 |---------|-------------|
 | `get_school_document(id, type)` | Télécharge la convocation BAC/BEPC. |
+| `verify_mesrs_payment(matricule, code, num)` | Vérifie la validité d'un paiement d'inscription MESRS (`inscription.mesrs-ci.net`). |
+| `get_mesrs_dexco_services()` | Récupère le catalogue des actes d'examen et diplômes DEXCO. |
+| `get_mesrs_announcements()` | Récupère les actualités et annonces flash officielles du MESRS. |
 | `get_sigfne_document(matricule, doc_type, annee)` | Télécharge un reçu de préinscription ou fiche de cursus (`agfne.sigfne.net`). |
 | `download_sigfne_document(matricule, doc_type, annee)` | Télécharge un document officiel SIGFNE / DESPS au format PDF. |
 | `get_infas_convocation(candidate_id, download_pdf)` | Récupère la convocation INFAS et télécharge le PDF optionnel. |

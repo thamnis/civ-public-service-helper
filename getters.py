@@ -378,6 +378,44 @@ def get_bts_filieres(category: str = "all") -> dict:
     return _get_fils(category=category)
 
 
+def verify_mesrs_payment(
+    matricule_mesrs: str,
+    code_paiement: str,
+    numero_paiement: str,
+    timeout: int = 15,
+) -> dict:
+    """
+    Vérifie la validité d'un paiement d'inscription / réinscription universitaire auprès du MESRS.
+
+    Args:
+        matricule_mesrs (str): Matricule MESRS (ex: "AAAB19920001").
+        code_paiement (str): Référence ou code de paiement (ex: "1502168548958751").
+        numero_paiement (str): Numéro de téléphone / paiement (ex: "0102030405").
+        timeout (int): Timeout en secondes.
+
+    Returns:
+        dict: Résultat de la vérification (statut, validité, détails).
+    """
+    from mesrs_services.scraper import verify_mesrs_payment as _verify
+    return _verify(matricule_mesrs, code_paiement, numero_paiement, timeout=timeout)
+
+
+def get_mesrs_dexco_services() -> dict:
+    """
+    Récupère le catalogue des actes d'examen et diplômes disponibles via DEXCO (https://inscription.mesrs-ci.net/dexco).
+    """
+    from mesrs_services.scraper import get_mesrs_dexco_services as _dexco
+    return _dexco()
+
+
+def get_mesrs_announcements() -> dict:
+    """
+    Récupère les actualités et annonces flash officielles diffusées sur le portail MESRS.
+    """
+    from mesrs_services.scraper import get_mesrs_announcements as _news
+    return _news()
+
+
 def get_pdf_path(sid: str, type: Literal['fco', 'fp', 'fi']):
     """
     Renvoie le chemin d'accès à un fichier PDF déjà téléchargé.
