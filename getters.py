@@ -69,18 +69,30 @@ def get_school_document(id: str, type: Literal['fco', 'fp', 'fi'] = "fp") -> int
     return 0
 
 
-def get_result(matricule: str, exam: Literal["bac", "bepc", "bts"], birthdate: Optional[str] = None):
+def get_result(
+    matricule: str,
+    exam: Literal["bac", "bepc", "bts", "sixieme", "affectation_sixieme", "seconde", "orientation_seconde"],
+    birthdate: Optional[str] = None,
+    download_pdf: bool = False,
+):
     """
-    Récupère les résultats d'examen pour un candidat (BAC, BEPC ou BTS).
+    Récupère les résultats d'examen ou d'affectation pour un candidat (BAC, BEPC, BTS, 6ème ou 2nde).
 
     Args:
         matricule (str): Matricule du candidat (ou identifiant BTS pour le BTS).
-        exam (Literal["bac", "bepc", "bts"]): Type d'examen.
+        exam (Literal["bac", "bepc", "bts", "sixieme", "affectation_sixieme", "seconde", "orientation_seconde"]): Type d'examen ou service.
         birthdate (str, optional): Date de naissance requise pour l'examen BTS (ex: "2007-01-16" ou "16/01/2007").
+        download_pdf (bool): Télécharger le PDF si applicable.
 
     Returns:
         dict or int: Un dictionnaire contenant les résultats, ou 404/code d'erreur si non trouvé.
     """
+    if exam in ["sixieme", "affectation_sixieme"]:
+        return get_sixieme_affectation(matricule, download_pdf=download_pdf)
+
+    if exam in ["seconde", "orientation_seconde"]:
+        return get_seconde_orientation(matricule, download_pdf=download_pdf)
+
     if exam == "bts":
         if not birthdate:
             raise ValueError("Le paramètre 'birthdate' est obligatoire pour consulter les résultats du BTS.")
@@ -143,6 +155,179 @@ def get_bts_result(matricule: str, birthdate: str, timeout: int = 15) -> dict:
     return _get_bts_result(matricule, birthdate, timeout=timeout)
 
 
+def get_sixieme_affectation(
+    matricule: str,
+    download_pdf: bool = False,
+    output_dir: str = os.path.join(DOWNLOAD_DIR, "affectation"),
+    timeout: int = 15,
+) -> dict:
+    """
+    Récupère les détails d'affectation en 6ème depuis la DOB (affectation.mendob.ci).
+
+    Args:
+        matricule (str): Matricule de l'élève (ex: "12345678A").
+        download_pdf (bool): Télécharger automatiquement la fiche en PDF.
+        output_dir (str): Dossier de sauvegarde pour le PDF.
+        timeout (int): Timeout en secondes.
+
+    Returns:
+        dict: Dictionnaire complet avec identité élève, établissement d'affectation et détails PDF.
+    """
+    from sixieme_affectation.scraper import get_sixieme_affectation as _get_sixieme_affectation
+    return _get_sixieme_affectation(
+        matricule,
+        download_pdf=download_pdf,
+        output_dir=output_dir,
+        timeout=timeout,
+    )
+
+
+def download_sixieme_affectation(
+    matricule: str,
+    output_dir: str = os.path.join(DOWNLOAD_DIR, "affectation"),
+    timeout: int = 15,
+) -> dict:
+    """
+    Télécharge la fiche officielle d'affectation en 6ème (PDF) depuis affectation.mendob.ci.
+
+    Args:
+        matricule (str): Matricule de l'élève (ex: "12345678A").
+        output_dir (str): Dossier de sauvegarde pour le PDF.
+        timeout: Timeout en secondes.
+
+    Returns:
+        dict: Dictionnaire avec statut de téléchargement et chemin du fichier.
+    """
+    from sixieme_affectation.scraper import download_assignment_document as _download_doc
+    return _download_doc(matricule, output_dir=output_dir, timeout=timeout)
+
+
+def get_infas_convocation(
+    candidate_id: str,
+    download_pdf: bool = False,
+    output_dir: str = os.path.join(DOWNLOAD_DIR, "infas"),
+    timeout: int = 15,
+) -> dict:
+    """
+    Récupère les informations de convocation pour le concours INFAS (https://infas.ciconcours.com).
+
+    Args:
+        candidate_id (str): Numéro de candidature (ex: "CD00000000" ou "CA00000000").
+        download_pdf (bool): Télécharger automatiquement la convocation PDF.
+        output_dir (str): Dossier de sauvegarde pour le PDF.
+        timeout (int): Timeout en secondes.
+
+    Returns:
+        dict: Informations de convocation et chemin du fichier PDF si téléchargé.
+    """
+    from infas_convocation.scraper import get_infas_convocation as _get_infas
+    return _get_infas(candidate_id, download_pdf=download_pdf, output_dir=output_dir, timeout=timeout)
+
+
+def download_infas_convocation(
+    candidate_id: str,
+    output_dir: str = os.path.join(DOWNLOAD_DIR, "infas"),
+    timeout: int = 15,
+) -> dict:
+    """
+    Télécharge la convocation PDF officielle pour le concours INFAS.
+
+    Args:
+        candidate_id (str): Numéro de candidature (ex: "CD00000000" ou "CA00000000").
+        output_dir (str): Dossier de destination pour le PDF.
+        timeout (int): Timeout en secondes.
+
+    Returns:
+        dict: Statut du téléchargement et chemin local du PDF.
+    """
+    from infas_convocation.scraper import download_infas_convocation as _dl_infas
+    return _dl_infas(candidate_id, output_dir=output_dir, timeout=timeout)
+
+
+def get_seconde_orientation(
+    matricule: str,
+    download_pdf: bool = False,
+    output_dir: str = os.path.join(DOWNLOAD_DIR, "orientation"),
+    timeout: int = 15,
+) -> dict:
+    """
+    Récupère les détails d'orientation en seconde depuis la DOB (orientation.mendob.ci).
+
+    Args:
+        matricule (str): Matricule de l'élève (ex: "12345678A").
+        download_pdf (bool): Télécharger automatiquement la fiche en PDF.
+        output_dir (str): Dossier de sauvegarde pour le PDF.
+        timeout (int): Timeout en secondes.
+
+    Returns:
+        dict: Dictionnaire complet avec identité élève, établissement d'accueil, série et détails PDF.
+    """
+    from seconde_orientation.scraper import get_seconde_orientation as _get_seconde
+    return _get_seconde(
+        matricule,
+        download_pdf=download_pdf,
+        output_dir=output_dir,
+        timeout=timeout,
+    )
+
+
+def download_seconde_orientation(
+    matricule: str,
+    output_dir: str = os.path.join(DOWNLOAD_DIR, "orientation"),
+    timeout: int = 15,
+) -> dict:
+    """
+    Télécharge la fiche officielle d'orientation en seconde (PDF) depuis orientation.mendob.ci.
+
+    Args:
+        matricule (str): Matricule de l'élève (ex: "12345678A").
+        output_dir (str): Dossier de sauvegarde pour le PDF.
+        timeout (int): Timeout en secondes.
+
+    Returns:
+        dict: Dictionnaire avec statut de téléchargement et chemin du fichier.
+    """
+    from seconde_orientation.scraper import download_orientation_document as _download_doc
+    return _download_doc(matricule, output_dir=output_dir, timeout=timeout)
+
+
+def get_sigfne_document(
+    matricule: str,
+    doc_type: Literal["recu", "cursus", "cursusnew"] = "recu",
+    annee: str = "2627",
+    output_dir: str = os.path.join(DOWNLOAD_DIR, "sigfne"),
+    timeout: int = 15,
+) -> dict:
+    """
+    Télécharge un document officiel SIGFNE/DESPS (Reçu de préinscription ou Fiche cursus).
+
+    Args:
+        matricule (str): Matricule de l'élève (ex: "12345678A").
+        doc_type (Literal["recu", "cursus", "cursusnew"]): Type de document ('recu', 'cursus', 'cursusnew').
+        annee (str): Année scolaire (ex: "2627" pour 2026-2027, "2526", ...).
+        output_dir (str): Dossier de destination du PDF.
+        timeout (int): Timeout en secondes.
+
+    Returns:
+        dict: Statut et chemin vers le document PDF téléchargé.
+    """
+    from sigfne_documents.scraper import download_sigfne_document as _dl_sigfne
+    return _dl_sigfne(matricule, doc_type=doc_type, annee=annee, output_dir=output_dir, timeout=timeout)
+
+
+def download_sigfne_document(
+    matricule: str,
+    doc_type: Literal["recu", "cursus", "cursusnew"] = "recu",
+    annee: str = "2627",
+    output_dir: str = os.path.join(DOWNLOAD_DIR, "sigfne"),
+    timeout: int = 15,
+) -> dict:
+    """
+    Alias pour télécharger un document officiel SIGFNE/DESPS (Reçu de préinscription ou Fiche cursus).
+    """
+    return get_sigfne_document(matricule, doc_type=doc_type, annee=annee, output_dir=output_dir, timeout=timeout)
+
+
 def get_bts_convoc(matricule):
     """
     Télécharge la convocation BTS à partir du site officiel du MESRS.
@@ -167,6 +352,30 @@ def get_bts_convoc(matricule):
     os.makedirs(bts_convoc_dir, exist_ok=True)
     with open(os.path.join(bts_convoc_dir, f"convoc-{matricule}.pdf"), "wb") as f:
         f.write(pdf_request.content)
+
+
+def get_bts_calendar() -> dict:
+    """
+    Récupère le calendrier officiel de la session BTS (étapes et dates clés).
+    """
+    from bts_result.scraper import get_bts_calendar as _get_cal
+    return _get_cal()
+
+
+def get_bts_statistics() -> dict:
+    """
+    Récupère les statistiques nationales de la session du BTS (taux de réussite, inscrits, centres).
+    """
+    from bts_result.scraper import get_bts_statistics as _get_stats
+    return _get_stats()
+
+
+def get_bts_filieres(category: str = "all") -> dict:
+    """
+    Récupère la liste des filières industrielles et tertiaires du BTS (https://bts.mesrs-ci.net).
+    """
+    from bts_result.scraper import get_bts_filieres as _get_fils
+    return _get_fils(category=category)
 
 
 def get_pdf_path(sid: str, type: Literal['fco', 'fp', 'fi']):
