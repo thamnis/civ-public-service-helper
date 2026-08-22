@@ -257,3 +257,209 @@ def get_bts_result(
         del parsed["photo"]
 
     return parsed
+
+
+def get_bts_calendar(
+    session: Optional[Session] = None,
+    timeout: int = 15,
+) -> Dict[str, Any]:
+    """
+    Récupère le calendrier officiel de la session BTS (étapes et dates clés).
+
+    Returns:
+        dict: Statut et liste des étapes du calendrier avec périodes associées.
+    """
+    http = session or Session()
+    cal_url = "https://bts.mesrs-ci.net/examen/calendrier"
+
+    try:
+        res = http.get(
+            cal_url,
+            headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+            },
+            timeout=timeout,
+        )
+        res.raise_for_status()
+    except RequestException as e:
+        return {"status": "error", "message": f"Erreur de connexion : {e}", "events": []}
+
+    soup = BeautifulSoup(res.text, "html.parser")
+    events = []
+    for tr in soup.find_all("tr"):
+        tds = tr.find_all("td")
+        if len(tds) >= 2:
+            etape = tds[0].get_text(" ", strip=True)
+            periode = tds[1].get_text(" ", strip=True)
+            if etape and periode:
+                events.append({"etape": etape, "periode": periode})
+
+    return {
+        "status": "success",
+        "events": events,
+        "count": len(events),
+    }
+
+
+def get_bts_statistics(
+    session: Optional[Session] = None,
+    timeout: int = 15,
+) -> Dict[str, Any]:
+    """
+    Récupère les statistiques nationales de la dernière session du BTS.
+
+    Returns:
+        dict: Chiffres clés (candidats inscrits, centres, filières, taux de réussite).
+    """
+    http = session or Session()
+    stat_url = "https://bts.mesrs-ci.net/resultats/statistiques"
+
+    try:
+        res = http.get(
+            stat_url,
+            headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+            },
+            timeout=timeout,
+        )
+        res.raise_for_status()
+    except RequestException as e:
+        return {"status": "error", "message": f"Erreur de connexion : {e}"}
+
+    soup = BeautifulSoup(res.text, "html.parser")
+    stats: Dict[str, str] = {}
+
+    for stat_div in soup.find_all(class_=lambda c: c and "bts-stat" in c):
+        val_div = stat_div.find(class_=lambda c: c and "value" in c)
+        lbl_div = stat_div.find(class_=lambda c: c and "label" in c)
+        if val_div and lbl_div:
+            val = val_div.get_text(strip=True)
+            lbl = lbl_div.get_text(strip=True).lower()
+            if "inscrit" in lbl or "candidat" in lbl:
+                stats["candidats_inscrits"] = val
+            elif "centre" in lbl:
+                stats["centres_examen"] = val
+            elif "fili" in lbl:
+                stats["filieres_count"] = val
+            elif "taux" in lbl or "reussite" in lbl or "réussite" in lbl:
+                stats["taux_reussite"] = val
+
+    return {
+        "status": "success",
+        "statistics": stats,
+    }
+
+
+def get_bts_filieres(
+    category: Optional[str] = "all",
+    session: Optional[Session] = None,
+    timeout: int = 15,
+) -> Dict[str, Any]:
+    """
+    Récupère la liste officielle des filières et spécialités du BTS (Industrielles & Tertiaires).
+
+    Args:
+        category (str): 'all', 'industrielles' (ou '1'), ou 'tertiaires' (ou '2').
+
+    Returns:
+        dict: Dictionnaire regroupant les filières par catégorie.
+    """
+    http = session or Session()
+    categories_to_fetch = []
+
+    cat_clean = str(category).lower()
+    if cat_clean in ["all", "tout"]:
+        categories_to_fetch = [("1", "industrielles"), ("2", "tertiaires")]
+    elif cat_clean in ["1", "industrielle", "industrielles", "indus"]:
+        categories_to_fetch = [("1", "industrielles")]
+    elif cat_clean in ["2", "tertiaire", "tertiaires", "tert"]:
+        categories_to_fetch = [("2", "tertiaires")]
+    else:
+        categories_to_fetch = [("1", "industrielles"), ("2", "tertiaires")]
+
+    result_data: Dict[str, list] = {"industrielles": [], "tertiaires": []}
+
+    for cat_id, cat_name in categories_to_fetch:
+        url = f"https://bts.mesrs-ci.net/filieres/cat/{cat_id}"
+        try:
+            res = http.get(
+                url,
+                headers={
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+                },
+                timeout=timeout,
+            )
+            res.raise_for_status()
+            soup = BeautifulSoup(res.text, "html.parser")
+            items = []
+            for card in soup.find_all(class_=lambda c: c and any(k in str(c) for k in ["card", "item", "list-group-item"])):
+                txt = card.get_text(" ", strip=True)
+                if txt and not any(skip in txt.lower() for skip in ["résultats", "examen", "inscriptions", "actualités"]):
+                    parts = txt.split(maxsplit=1)
+                    sigle = parts[0] if parts else ""
+                    libelle = parts[1] if len(parts) > 1 else ""
+                    items.append({"sigle": sigle, "libelle": libelle})
+            result_data[cat_name] = items
+        except Exception:
+            pass
+
+    return {
+        "status": "success",
+        "industrielles": result_data["industrielles"],
+        "tertiaires": result_data["tertiaires"],
+        "total_count": len(result_data["industrielles"]) + len(result_data["tertiaires"]),
+    }
+
+
+def download_bts_convocation(
+    matricule: str,
+    output_dir: str = "downloads/bts-convoc",
+    filename: Optional[str] = None,
+    session: Optional[Session] = None,
+    timeout: int = 15,
+) -> Dict[str, Any]:
+    """
+    Télécharge la convocation officielle au BTS depuis le portail MESRS.
+    """
+    mat = str(matricule).strip()
+    if not mat:
+        return {"status": "error", "message": "Le matricule est requis."}
+
+    http = session or Session()
+    root_url = "https://bts.mesrs-ci.net"
+    deep_page = f"{root_url}/convocation/candidat"
+
+    try:
+        res_cand = http.post(deep_page, data={"matricule": mat}, timeout=timeout)
+        res_cand.raise_for_status()
+        soup = BeautifulSoup(res_cand.content, "html.parser")
+        id_inp = soup.find("input", attrs={"name": "id"})
+        if not id_inp or not id_inp.get("value"):
+            return {"status": "not_found", "message": "Candidat non trouvé pour le retrait de convocation."}
+
+        student_id = id_inp["value"]
+        pdf_res = http.post(f"{root_url}/convocation.pdf", data={"id": student_id}, timeout=timeout)
+        pdf_res.raise_for_status()
+
+        if not pdf_res.content.startswith(b"%PDF"):
+            return {"status": "error", "message": "Le document renvoyé n'est pas un fichier PDF valide."}
+
+        import os
+        os.makedirs(output_dir, exist_ok=True)
+        out_name = filename or f"convocation_bts_{mat}.pdf"
+        if not out_name.lower().endswith(".pdf"):
+            out_name += ".pdf"
+        file_path = os.path.join(output_dir, out_name)
+
+        with open(file_path, "wb") as f:
+            f.write(pdf_res.content)
+
+        return {
+            "status": "success",
+            "matricule": mat,
+            "file_path": os.path.abspath(file_path),
+            "file_size": len(pdf_res.content),
+            "filename": out_name,
+        }
+    except Exception as e:
+        return {"status": "error", "message": f"Erreur lors du téléchargement de la convocation BTS : {e}"}

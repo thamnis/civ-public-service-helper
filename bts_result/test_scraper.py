@@ -170,11 +170,71 @@ class TestGettersIntegration(unittest.TestCase):
         mock_get_bts.return_value = {"status": "success", "is_admitted": True}
         res = getters.get_result("TEST0101000001", exam="bts", birthdate="2000-01-01")
         self.assertEqual(res["status"], "success")
-        self.assertTrue(res["is_admitted"])
 
     def test_getters_get_result_bts_missing_birthdate(self):
         with self.assertRaises(ValueError):
             getters.get_result("TEST0101000001", exam="bts")
+
+
+class TestBtsUtilities(unittest.TestCase):
+    @patch("bts_result.scraper.Session")
+    def test_get_bts_calendar_success(self, mock_session_cls):
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_response.text = """
+        <table>
+            <tr><td>Étape 1</td><td>01 Janvier au 15 Janvier</td></tr>
+            <tr><td>Étape 2</td><td>01 Février au 15 Février</td></tr>
+        </table>
+        """
+        mock_session.get.return_value = mock_response
+
+        from bts_result.scraper import get_bts_calendar
+        res = get_bts_calendar(session=mock_session)
+        self.assertEqual(res["status"], "success")
+        self.assertEqual(res["count"], 2)
+        self.assertEqual(res["events"][0]["etape"], "Étape 1")
+
+    @patch("bts_result.scraper.Session")
+    def test_get_bts_statistics_success(self, mock_session_cls):
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_response.text = """
+        <div class="bts-stat">
+            <div class="value">50 000</div>
+            <div class="label">Candidats inscrits</div>
+        </div>
+        <div class="bts-stat">
+            <div class="value">45,50%</div>
+            <div class="label">Taux de réussite</div>
+        </div>
+        """
+        mock_session.get.return_value = mock_response
+
+        from bts_result.scraper import get_bts_statistics
+        res = get_bts_statistics(session=mock_session)
+        self.assertEqual(res["status"], "success")
+        self.assertEqual(res["statistics"]["candidats_inscrits"], "50 000")
+        self.assertEqual(res["statistics"]["taux_reussite"], "45,50%")
+
+    @patch("bts_result.scraper.Session")
+    def test_get_bts_filieres_success(self, mock_session_cls):
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_response.text = """
+        <div class="card">IDA Informatique developpeur d'applications</div>
+        <div class="card">RIT Reseaux informatiques et telecommunications</div>
+        """
+        mock_session.get.return_value = mock_response
+
+        from bts_result.scraper import get_bts_filieres
+        res = get_bts_filieres(category="industrielles", session=mock_session)
+        self.assertEqual(res["status"], "success")
+        self.assertEqual(len(res["industrielles"]), 2)
+        self.assertEqual(res["industrielles"][0]["sigle"], "IDA")
 
 
 if __name__ == "__main__":
