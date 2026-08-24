@@ -2,7 +2,7 @@
 
 Bienvenue sur le Wiki officiel du projet **Civ Public Service Helper** !
 
-**Civ Public Service Helper** est une boîte à outils Python modulaire, robuste et extensible conçue pour interagir avec les plateformes gouvernementales ivoiriennes (Ministère de l'Éducation Nationale et de l'Alphabétisation - MENA, Ministère de l'Enseignement Supérieur et de la Recherche Scientifique - MESRS, Direction des Examens et Concours - DECO / DEXCO, Direction de l'Orientation et des Bourses - DOB, et concours nationaux tels que l'INFAS).
+**Civ Public Service Helper** est une boîte à outils Python modulaire, robuste et extensible conçue pour interagir avec les plateformes gouvernementales ivoiriennes (Ministère de l'Éducation Nationale et de l'Alphabétisation - MENA, Ministère de l'Enseignement Supérieur et de la Recherche Scientifique - MESRS, Ministère de l'Enseignement Technique, de la Formation Professionnelle et de l'Apprentissage - METFPA, Direction des Examens et Concours - DECO / DEXC / DEXCO, Direction de l'Orientation et des Bourses - DOB / DOBMFP, et concours nationaux tels que l'INFAS et l'IPNETP).
 
 ---
 
@@ -29,6 +29,9 @@ Bienvenue sur le Wiki officiel du projet **Civ Public Service Helper** !
 | **Portail & Inscriptions MESRS** | MESRS | [inscription.mesrs-ci.net](https://inscription.mesrs-ci.net) | [`mesrs_services/`](../mesrs_services/README.md) |
 | **Orientation Post-BAC** | MESRS | [bac.mesrs-ci.net](https://bac.mesrs-ci.net) | [`after_bac_orientation/`](../after_bac_orientation/README.md) |
 | **Résultats BAC & BEPC** | MENA / DECO | [itdeco.ci](https://itdeco.ci) | [`getters.py`](../getters.py) |
+| **Examens Techniques SYGADEXC** | METFPA / DEXC | [dexc.ci](http://dexc.ci) | [`wiki/Examens-et-Resultats.md`](Examens-et-Resultats.md#3-examens-professionnels--enseignement-technique--dexc-metfpa-dexcci) |
+| **Bourses & Orientation METFPA** | METFPA / DOBMFP | [dobmfp.com](https://dobmfp.com) / [orientationfp.com](https://orientationfp.com) | [`wiki/Affectations-et-Orientations.md`](Affectations-et-Orientations.md#4-orientations-professionnelles--bourses-metfpa-dobmfpcom--orientationfpcom) |
+| **Concours Enseignants IPNETP** | IPNETP / METFPA | [ipnetp.ci](https://ipnetp.ci) / [sigec.ipnetp.cloud](https://sigec.ipnetp.cloud) | [`wiki/Concours-et-Convocations.md`](Concours-et-Convocations.md#4-concours-ipnetp--concours-professionnels-metfpa-ipnetpci--sigecipnetpcloud) |
 
 ---
 

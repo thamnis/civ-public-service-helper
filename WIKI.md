@@ -53,6 +53,9 @@ civ-public-service-helper/
 | **Portail & Inscriptions MESRS** | MESRS | [inscription.mesrs-ci.net](https://inscription.mesrs-ci.net) | `mesrs_services/` |
 | **Orientation Post-BAC** | MESRS | [bac.mesrs-ci.net](https://bac.mesrs-ci.net) | `after_bac_orientation/` |
 | **Résultats BAC & BEPC** | MENA / DECO | [itdeco.ci](https://itdeco.ci) | `getters.py` |
+| **Examens Techniques SYGADEXC** | METFPA / DEXC | [dexc.ci](http://dexc.ci) | `wiki/Examens-et-Resultats.md` |
+| **Bourses & Orientation METFPA** | METFPA / DOBMFP | [dobmfp.com](https://dobmfp.com) / [orientationfp.com](https://orientationfp.com) | `wiki/Affectations-et-Orientations.md` |
+| **Concours Enseignants IPNETP** | IPNETP / METFPA | [ipnetp.ci](https://ipnetp.ci) / [sigec.ipnetp.cloud](https://sigec.ipnetp.cloud) | `wiki/Concours-et-Convocations.md` |
 
 ---
 

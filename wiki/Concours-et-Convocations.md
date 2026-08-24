@@ -72,3 +72,20 @@ from getters import get_bts_convoc
 # Télécharge dans downloads/bts-convoc/convoc-{matricule}.pdf
 get_bts_convoc("DOJO010100001")
 ```
+
+---
+
+## 4. Concours IPNETP & Concours Professionnels METFPA (`ipnetp.ci` & `sigec.ipnetp.cloud`)
+
+L'**Institut Pédagogique National de l'Enseignement Technique et Professionnel (IPNETP)** forme les professeurs et personnels d'encadrement des collèges et lycées techniques de Côte d'Ivoire.
+
+### Plateforme SIGEC IPNETP (`https://sigec.ipnetp.cloud`)
+- 📝 **Inscriptions en ligne** : Concours directs et professionnels d'entrée à l'IPNETP :
+  - **CAP/CM** : Certificat d'Aptitude Pédagogique pour les Collèges Modernes / Enseignement Technique
+  - **CAP/PL** : Certificat d'Aptitude Pédagogique pour les Lycées
+  - **CAP/PC** : Certificat d'Aptitude Pédagogique de Conseiller d'Éducation
+  - **CAP/COP** : Conseiller d'Orientation Professionnelle
+- 💳 **Paiement sécurisé** : Paiement Mobile Money intégré des frais de candidature.
+- 🔍 **Vérification d'éligibilité et convocations** : Consultation du statut, téléchargement des fiches de candidature et convocations officielles.
+- 🏆 **Résultats & Délibérations** : Publication des résultats des admissibilités et admissions définitives.
+

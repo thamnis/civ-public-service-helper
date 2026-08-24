@@ -69,3 +69,28 @@ print(res_bac)
 res_bepc = get_result("12345678A", exam="bepc")
 print(res_bepc)
 ```
+
+---
+
+## 3. Examens Professionnels & Enseignement Technique — DEXC METFPA (`dexc.ci`)
+
+La **Direction des Examens et Concours (DEXC)** du Ministère de l'Enseignement Technique, de la Formation Professionnelle et de l'Apprentissage (METFPA) gère l'organisation, les jurys et les délibérations des diplômes techniques d'État (CAP, BT, BP, BEP, CQP) via la plateforme **SYGADEXC** ([http://dexc.ci](http://dexc.ci)).
+
+### Missions & Fonctionnalités de la plateforme `dexc.ci`
+- 📋 **Gestion des Examens et Diplômes Techniques** :
+  - **CAP** : Certificat d'Aptitude Professionnelle
+  - **BT** : Brevet de Technicien
+  - **BP** : Brevet Professionnel
+  - **BEP** : Brevet d'Études Professionnelles
+  - **CQP** : Certificat de Qualification Professionnelle
+- ✍️ **Espace Acteurs & Correcteurs** (`/espace-acteur`, `/inscription-acteur-correcteur`) :
+  - Inscription des examinateurs, correcteurs, présidents et vice-présidents de jury (PJ/VPJ), superviseurs et membres de secrétariat.
+  - Saisie des informations d'identité (CNI) et bancaires (RIB) pour le traitement des indemnités de session.
+  - Choix et affectation aux centres de composition et de délibération (`/choix-centres-correcteurs`).
+- 🏢 **Espace Directions Régionales (DR)** (`/espace-dr`, `/espace-drdexc`) :
+  - Proposition et validation des centres d'examens régionaux (`/validations-centres`).
+  - Validation et confirmation des listes d'acteurs de session (`/validations-acteurs`).
+- 💰 **Suivi des États de Paiements et Indemnités** :
+  - États d'indemnités pour les épreuves écrites (`/axes-ecrit`), épreuves physiques EPS (`/axes-eps`), travaux pratiques TP (`/axes-tp`) et soutenances (`/axes-soutenance`).
+  - États de paiement centralisés pour les examens (`/etats-paiements-examens`) et concours professionnels (`/etats-paiements-concours`).
+

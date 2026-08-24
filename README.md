@@ -155,6 +155,9 @@ Le projet est organisé en sous-modules spécialisés, chacun disposant de sa pr
 | [`infas_convocation/`](infas_convocation/) | `infas.ciconcours.com` | Scraping des épreuves, centres et téléchargement des convocations INFAS. Voir le [README du module](infas_convocation/README.md). |
 | [`bts_result/`](bts_result/) | `bts.mesrs-ci.net` | Résultats BTS, calendrier officiel, statistiques nationales, filières et convocation. Voir le [README du module](bts_result/README.md). |
 | [`after_bac_orientation/`](after_bac_orientation/) | `bac.mesrs-ci.net` | Extraction et classement des filières et universités post-BAC. Voir le [README du module](after_bac_orientation/README.md). |
+| **DEXC METFPA** | `dexc.ci` | Gestion des acteurs, correcteurs, jurys et indemnités des examens techniques (CAP, BT, BP, BEP, CQP). Voir le [Wiki](wiki/Examens-et-Resultats.md#3-examens-professionnels--enseignement-technique--dexc-metfpa-dexcci). |
+| **DOBMFP & Orientation FP** | `dobmfp.com` / `orientationfp.com` | Bourses CI / Hors CI (BHCI) et résultats des post-orientations BTS / 3ème. Voir le [Wiki](wiki/Affectations-et-Orientations.md#4-orientations-professionnelles--bourses-metfpa-dobmfpcom--orientationfpcom). |
+| **IPNETP (SIGEC)** | `ipnetp.ci` / `sigec.ipnetp.cloud` | Inscription et convocations aux concours d'enseignants de l'enseignement technique. Voir le [Wiki](wiki/Concours-et-Convocations.md#4-concours-ipnetp--concours-professionnels-metfpa-ipnetpci--sigecipnetpcloud). |
 
 ---
 

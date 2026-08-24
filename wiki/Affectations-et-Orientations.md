@@ -94,3 +94,18 @@ python after_bac_orientation/main.py --concours
 python after_bac_orientation/main.py --admissibles 20693
 python after_bac_orientation/main.py --payment 12345678A
 ```
+
+---
+
+## 4. Orientations Professionnelles & Bourses METFPA (`dobmfp.com` & `orientationfp.com`)
+
+La **Direction de l'Orientation, des Bourses et de la Mobilité (DOBM / DOBMFP)** du Ministère de l'Enseignement Technique, de la Formation Professionnelle et de l'Apprentissage (METFPA) coordonne les orientations en formation professionnelle et les bourses d'études nationales et internationales.
+
+### Plateformes & Services
+- 🌐 **DOBMFP Officiel** ([https://dobmfp.com](https://dobmfp.com)) :
+  - **Bourses Côte d'Ivoire & Bourses Hors Côte d'Ivoire (BHCI)** : Dépôt de dossiers d'attribution et de renouvellement pour les boursiers à l'étranger.
+  - **Espaces dédiés** : Élève/Étudiant, Établissement de formation et Ambassades / Consulats.
+- 🎓 **Orientation FP & Résultats Post-Orientation** ([https://orientationfp.com](https://orientationfp.com)) :
+  - **Orientation BTS Passerelle Publique** (`/public/index.php/admis_bts`) : Résultats des orientations en 1ère année BTS dans les établissements publics.
+  - **Résultats Post-3ème OAT** (`/public/index.php/admis_oat`) : Résultats des travaux post-orientations après la classe de troisième pour l'Enseignement Technique et la Formation Professionnelle (ETFP).
+
