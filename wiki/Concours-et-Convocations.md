@@ -6,7 +6,7 @@ Ce chapitre décrit les outils dédiés aux concours nationaux (notamment l'INFA
 
 ## 1. Concours d'Entrée à l'INFAS (`infas.ciconcours.com`)
 
-Le sous-module [`infas_convocation/`](../infas_convocation/README.md) automatise l'interrogation du portail officiel du concours de l'Institut National de Formation des Agents de Santé.
+Le sous-module [`infas_convocation/`](../legacy/infas_convocation/README.md) automatise l'interrogation du portail officiel du concours de l'Institut National de Formation des Agents de Santé.
 
 ### Fonctionnalités
 - 🔐 Gestion automatique du jeton de sécurité CSRF.
@@ -33,10 +33,10 @@ download_infas_convocation("CD00000000", output_dir="downloads/infas")
 ### Utilisation CLI
 ```bash
 # Consultation unitaire
-python infas_convocation/main.py --id CD00000000 --download --output-dir downloads/infas
+python legacy/infas_convocation/main.py --id CD00000000 --download --output-dir downloads/infas
 
 # Traitement par lot (batch)
-python infas_convocation/main.py --file infas_convocation/data.json --save-json results.json
+python legacy/infas_convocation/main.py --file infas_convocation/data.json --save-json results.json
 ```
 
 ---

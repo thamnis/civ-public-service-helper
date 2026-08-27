@@ -27,14 +27,11 @@ Bienvenue sur le Wiki complet du projet **Civ Public Service Helper**.
 
 ```text
 civ-public-service-helper/
-├── getters.py                  # API Python unifiée de haut niveau
-├── bts_result/                 # Résultats, calendrier, statistiques, filières et convocation BTS
-├── sixieme_affectation/        # Identité élève, collège d'accueil et téléchargement PDF 6ème
-├── seconde_orientation/        # Identité élève, lycée d'accueil, série et téléchargement PDF 2nde
-├── infas_convocation/          # Candidat, table, centre, sessions et téléchargement PDF INFAS
-├── sigfne_documents/           # Reçus de préinscription et fiches de cursus scolaire (2019-2027)
-├── mesrs_services/             # Vérification paiement étudiant, catalogue DEXCO et annonces MESRS
-├── after_bac_orientation/      # Concours d'excellence, admissibles classés, paiement et simulateur
+├── api/                        # API REST FastAPI et routeurs
+├── civ_helper/                 # SDK principal et CLI unifiée
+├── docs/                       # Documentation additionnelle (Annuaire, etc.)
+├── getters.py                  # Façade API Python unifiée de haut niveau
+├── legacy/                     # Modules hérités pour la compatibilité (bts, infas, etc.)
 ├── wiki/                       # Pages Wiki modulaires
 └── WIKI.md                     # Document Wiki consolidé
 ```
@@ -45,13 +42,13 @@ civ-public-service-helper/
 
 | Service | Organisme | URL officielle | Sous-module |
 |---|---|---|---|
-| **Résultats & Services BTS** | MESRS / DEXCO | [bts.mesrs-ci.net](https://bts.mesrs-ci.net) | `bts_result/` |
-| **Affectation en Sixième** | MENA / DOB | [affectation.mendob.ci](https://affectation.mendob.ci) | `sixieme_affectation/` |
-| **Orientation en Seconde** | MENA / DOB | [orientation.mendob.ci](https://orientation.mendob.ci) | `seconde_orientation/` |
-| **Concours d'Entrée INFAS** | Ministère de la Santé / INFAS | [infas.ciconcours.com](https://infas.ciconcours.com) | `infas_convocation/` |
-| **Documents Scolaires SIGFNE** | MENA / DESPS | [agfne.sigfne.net](https://agfne.sigfne.net) | `sigfne_documents/` |
-| **Portail & Inscriptions MESRS** | MESRS | [inscription.mesrs-ci.net](https://inscription.mesrs-ci.net) | `mesrs_services/` |
-| **Orientation Post-BAC** | MESRS | [bac.mesrs-ci.net](https://bac.mesrs-ci.net) | `after_bac_orientation/` |
+| **Résultats & Services BTS** | MESRS / DEXCO | [bts.mesrs-ci.net](https://bts.mesrs-ci.net) | `legacy/bts_result/` |
+| **Affectation en Sixième** | MENA / DOB | [affectation.mendob.ci](https://affectation.mendob.ci) | `legacy/sixieme_affectation/` |
+| **Orientation en Seconde** | MENA / DOB | [orientation.mendob.ci](https://orientation.mendob.ci) | `legacy/seconde_orientation/` |
+| **Concours d'Entrée INFAS** | Ministère de la Santé / INFAS | [infas.ciconcours.com](https://infas.ciconcours.com) | `legacy/infas_convocation/` |
+| **Documents Scolaires SIGFNE** | MENA / DESPS | [agfne.sigfne.net](https://agfne.sigfne.net) | `legacy/sigfne_documents/` |
+| **Portail & Inscriptions MESRS** | MESRS | [inscription.mesrs-ci.net](https://inscription.mesrs-ci.net) | `legacy/mesrs_services/` |
+| **Orientation Post-BAC** | MESRS | [bac.mesrs-ci.net](https://bac.mesrs-ci.net) | `legacy/after_bac_orientation/` |
 | **Résultats BAC & BEPC** | MENA / DECO | [itdeco.ci](https://itdeco.ci) | `getters.py` |
 | **Examens Techniques SYGADEXC** | METFPA / DEXC | [dexc.ci](http://dexc.ci) | `wiki/Examens-et-Resultats.md` |
 | **Bourses & Orientation METFPA** | METFPA / DOBMFP | [dobmfp.com](https://dobmfp.com) / [orientationfp.com](https://orientationfp.com) | `wiki/Affectations-et-Orientations.md` |
@@ -105,10 +102,10 @@ for ev in cal.get("events", []):
 
 ### Exemple CLI :
 ```bash
-python bts_result/main.py --id DOJO010100001 --birthdate 01/01/2000
-python bts_result/main.py --calendar
-python bts_result/main.py --stats
-python bts_result/main.py --filieres
+python legacy/bts_result/main.py --id DOJO010100001 --birthdate 01/01/2000
+python legacy/bts_result/main.py --calendar
+python legacy/bts_result/main.py --stats
+python legacy/bts_result/main.py --filieres
 ```
 
 ---
@@ -127,7 +124,7 @@ print("Élève :", res["student"]["full_name"], "Collège :", res["school"]["sch
 
 ### Exemple CLI :
 ```bash
-python sixieme_affectation/main.py --id 12345678A --download --output-dir downloads/affectation
+python legacy/sixieme_affectation/main.py --id 12345678A --download --output-dir downloads/affectation
 ```
 
 ---
@@ -146,7 +143,7 @@ print("Lycée :", res["school"]["school_name"], "Série :", res["school"]["serie
 
 ### Exemple CLI :
 ```bash
-python seconde_orientation/main.py --id 12345678A --download --output-dir downloads/orientation
+python legacy/seconde_orientation/main.py --id 12345678A --download --output-dir downloads/orientation
 ```
 
 ---
@@ -165,7 +162,7 @@ print("Candidat :", res["full_name"], "Table :", res["table_number"])
 
 ### Exemple CLI :
 ```bash
-python infas_convocation/main.py --id CD00000000 --download --output-dir downloads/infas
+python legacy/infas_convocation/main.py --id CD00000000 --download --output-dir downloads/infas
 ```
 
 ---
@@ -184,7 +181,7 @@ print("PDF :", res["file_path"])
 
 ### Exemple CLI :
 ```bash
-python sigfne_documents/main.py --id 12345678A --type recu --annee 2627
+python legacy/sigfne_documents/main.py --id 12345678A --type recu --annee 2627
 ```
 
 ---
@@ -209,9 +206,9 @@ print("Actes disponibles :", dexco["count"])
 
 ### Exemple CLI :
 ```bash
-python mesrs_services/main.py --matricule AAAB19920001 --code-paiement 1502168548958751 --numero-paiement 0102030405
-python mesrs_services/main.py --dexco
-python mesrs_services/main.py --announcements
+python legacy/mesrs_services/main.py --matricule AAAB19920001 --code-paiement 1502168548958751 --numero-paiement 0102030405
+python legacy/mesrs_services/main.py --dexco
+python legacy/mesrs_services/main.py --announcements
 ```
 
 ---
@@ -233,9 +230,9 @@ for c in admis["admissibles"][:5]:
 
 ### Exemple CLI :
 ```bash
-python after_bac_orientation/main.py --concours
-python after_bac_orientation/main.py --admissibles 20693
-python after_bac_orientation/main.py --payment 12345678A
+python legacy/after_bac_orientation/main.py --concours
+python legacy/after_bac_orientation/main.py --admissibles 20693
+python legacy/after_bac_orientation/main.py --payment 12345678A
 ```
 
 ---
@@ -280,5 +277,5 @@ python after_bac_orientation/main.py --payment 12345678A
 ### Tests unitaires
 Exécutez la suite complète de 72 tests unitaires avant tout commit :
 ```bash
-python -m unittest after_bac_orientation/test_scraper.py mesrs_services/test_scraper.py bts_result/test_scraper.py sigfne_documents/test_scraper.py seconde_orientation/test_scraper.py infas_convocation/test_scraper.py sixieme_affectation/test_scraper.py -v
+python -m unittest legacy/after_bac_orientation/test_scraper.py legacy/mesrs_services/test_scraper.py legacy/bts_result/test_scraper.py legacy/sigfne_documents/test_scraper.py legacy/seconde_orientation/test_scraper.py legacy/infas_convocation/test_scraper.py legacy/sixieme_affectation/test_scraper.py -v
 ```

@@ -6,7 +6,7 @@ Ce chapitre décrit les outils d'extraction et de téléchargement pour les affe
 
 ## 1. Affectation en Sixième (`affectation.mendob.ci`)
 
-Le sous-module [`sixieme_affectation/`](../sixieme_affectation/README.md) permet d'interroger la Direction de l'Orientation et des Bourses (DOB).
+Le sous-module [`sixieme_affectation/`](../legacy/sixieme_affectation/README.md) permet d'interroger la Direction de l'Orientation et des Bourses (DOB).
 
 ### Fonctionnalités
 - 🔍 Identité complète de l'élève (nom, prénoms, date de naissance, genre).
@@ -27,14 +27,14 @@ if res["status"] == "success":
 
 ### Utilisation CLI
 ```bash
-python sixieme_affectation/main.py --id 12345678A --download --output-dir downloads/affectation
+python legacy/sixieme_affectation/main.py --id 12345678A --download --output-dir downloads/affectation
 ```
 
 ---
 
 ## 2. Orientation en Seconde (`orientation.mendob.ci`)
 
-Le sous-module [`seconde_orientation/`](../seconde_orientation/README.md) permet de consulter les décisions d'orientation en 2nde de l'enseignement général et technique.
+Le sous-module [`seconde_orientation/`](../legacy/seconde_orientation/README.md) permet de consulter les décisions d'orientation en 2nde de l'enseignement général et technique.
 
 ### Fonctionnalités
 - 🔍 Scores de l'élève (Total Général Pondéré TGP, Moyenne MSNO).
@@ -55,14 +55,14 @@ if res["status"] == "success":
 
 ### Utilisation CLI
 ```bash
-python seconde_orientation/main.py --id 12345678A --download --output-dir downloads/orientation
+python legacy/seconde_orientation/main.py --id 12345678A --download --output-dir downloads/orientation
 ```
 
 ---
 
 ## 3. Orientation Post-BAC (`bac.mesrs-ci.net`)
 
-Le sous-module [`after_bac_orientation/`](../after_bac_orientation/README.md) interagit avec la plateforme d'orientation des bacheliers du MESRS.
+Le sous-module [`after_bac_orientation/`](../legacy/after_bac_orientation/README.md) interagit avec la plateforme d'orientation des bacheliers du MESRS.
 
 ### Fonctionnalités
 - 🏛️ **Concours d'orientation d'excellence** : Architecture, Urbanisme, ENSAU, Université de Bondoukou.
@@ -90,9 +90,9 @@ print("Paiement :", pay["is_paid"])
 
 ### Utilisation CLI
 ```bash
-python after_bac_orientation/main.py --concours
-python after_bac_orientation/main.py --admissibles 20693
-python after_bac_orientation/main.py --payment 12345678A
+python legacy/after_bac_orientation/main.py --concours
+python legacy/after_bac_orientation/main.py --admissibles 20693
+python legacy/after_bac_orientation/main.py --payment 12345678A
 ```
 
 ---

@@ -28,16 +28,16 @@ Le projet dispose d'une suite de 72 tests unitaires couvrant l'ensemble des modu
 
 ### Lancer tous les tests unitaires :
 ```bash
-python -m unittest after_bac_orientation/test_scraper.py mesrs_services/test_scraper.py bts_result/test_scraper.py sigfne_documents/test_scraper.py seconde_orientation/test_scraper.py infas_convocation/test_scraper.py sixieme_affectation/test_scraper.py -v
+python -m unittest legacy/after_bac_orientation/test_scraper.py legacy/mesrs_services/test_scraper.py legacy/bts_result/test_scraper.py legacy/sigfne_documents/test_scraper.py legacy/seconde_orientation/test_scraper.py legacy/infas_convocation/test_scraper.py legacy/sixieme_affectation/test_scraper.py -v
 ```
 
 ### Lancer les tests d'un sous-module spécifique :
 ```bash
 # Exemple pour le BTS
-python -m unittest bts_result/test_scraper.py -v
+python -m unittest legacy/bts_result/test_scraper.py -v
 
 # Exemple pour INFAS
-python -m unittest infas_convocation/test_scraper.py -v
+python -m unittest legacy/infas_convocation/test_scraper.py -v
 ```
 
 ---

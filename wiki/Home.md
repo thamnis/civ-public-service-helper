@@ -21,13 +21,13 @@ Bienvenue sur le Wiki officiel du projet **Civ Public Service Helper** !
 
 | Domaine / Plateforme | Organisme | URL officielle | Sous-module |
 |---|---|---|---|
-| **Résultats & Services BTS** | MESRS / DEXCO | [bts.mesrs-ci.net](https://bts.mesrs-ci.net) | [`bts_result/`](../bts_result/README.md) |
-| **Affectation en Sixième** | MENA / DOB | [affectation.mendob.ci](https://affectation.mendob.ci) | [`sixieme_affectation/`](../sixieme_affectation/README.md) |
-| **Orientation en Seconde** | MENA / DOB | [orientation.mendob.ci](https://orientation.mendob.ci) | [`seconde_orientation/`](../seconde_orientation/README.md) |
-| **Concours d'Entrée INFAS** | Ministère de la Santé / INFAS | [infas.ciconcours.com](https://infas.ciconcours.com) | [`infas_convocation/`](../infas_convocation/README.md) |
-| **Documents Scolaires SIGFNE** | MENA / DESPS | [agfne.sigfne.net](https://agfne.sigfne.net) | [`sigfne_documents/`](../sigfne_documents/README.md) |
-| **Portail & Inscriptions MESRS** | MESRS | [inscription.mesrs-ci.net](https://inscription.mesrs-ci.net) | [`mesrs_services/`](../mesrs_services/README.md) |
-| **Orientation Post-BAC** | MESRS | [bac.mesrs-ci.net](https://bac.mesrs-ci.net) | [`after_bac_orientation/`](../after_bac_orientation/README.md) |
+| **Résultats & Services BTS** | MESRS / DEXCO | [bts.mesrs-ci.net](https://bts.mesrs-ci.net) | [`bts_result/`](../legacy/bts_result/README.md) |
+| **Affectation en Sixième** | MENA / DOB | [affectation.mendob.ci](https://affectation.mendob.ci) | [`sixieme_affectation/`](../legacy/sixieme_affectation/README.md) |
+| **Orientation en Seconde** | MENA / DOB | [orientation.mendob.ci](https://orientation.mendob.ci) | [`seconde_orientation/`](../legacy/seconde_orientation/README.md) |
+| **Concours d'Entrée INFAS** | Ministère de la Santé / INFAS | [infas.ciconcours.com](https://infas.ciconcours.com) | [`infas_convocation/`](../legacy/infas_convocation/README.md) |
+| **Documents Scolaires SIGFNE** | MENA / DESPS | [agfne.sigfne.net](https://agfne.sigfne.net) | [`sigfne_documents/`](../legacy/sigfne_documents/README.md) |
+| **Portail & Inscriptions MESRS** | MESRS | [inscription.mesrs-ci.net](https://inscription.mesrs-ci.net) | [`mesrs_services/`](../legacy/mesrs_services/README.md) |
+| **Orientation Post-BAC** | MESRS | [bac.mesrs-ci.net](https://bac.mesrs-ci.net) | [`after_bac_orientation/`](../legacy/after_bac_orientation/README.md) |
 | **Résultats BAC & BEPC** | MENA / DECO | [itdeco.ci](https://itdeco.ci) | [`getters.py`](../getters.py) |
 | **Examens Techniques SYGADEXC** | METFPA / DEXC | [dexc.ci](http://dexc.ci) | [`wiki/Examens-et-Resultats.md`](Examens-et-Resultats.md#3-examens-professionnels--enseignement-technique--dexc-metfpa-dexcci) |
 | **Bourses & Orientation METFPA** | METFPA / DOBMFP | [dobmfp.com](https://dobmfp.com) / [orientationfp.com](https://orientationfp.com) | [`wiki/Affectations-et-Orientations.md`](Affectations-et-Orientations.md#4-orientations-professionnelles--bourses-metfpa-dobmfpcom--orientationfpcom) |

@@ -6,7 +6,7 @@ Ce chapitre décrit les méthodes pour consulter les résultats scolaires et d'e
 
 ## 1. Brevet de Technicien Supérieur (BTS)
 
-Le module [`bts_result/`](../bts_result/README.md) interagit avec le portail officiel du MESRS ([https://bts.mesrs-ci.net](https://bts.mesrs-ci.net)).
+Le module [`bts_result/`](../legacy/bts_result/README.md) interagit avec le portail officiel du MESRS ([https://bts.mesrs-ci.net](https://bts.mesrs-ci.net)).
 
 ### Fonctionnalités
 - 🔍 **Résultats d'admissibilité** : Consultation par matricule / identifiant BTS et date de naissance.
@@ -39,16 +39,16 @@ print("Taux de réussite :", stats["statistics"].get("taux_reussite"))
 ### Utilisation CLI
 ```bash
 # Consulter un candidat
-python bts_result/main.py --id DOJO010100001 --birthdate 01/01/2000
+python legacy/bts_result/main.py --id DOJO010100001 --birthdate 01/01/2000
 
 # Afficher le calendrier officiel
-python bts_result/main.py --calendar
+python legacy/bts_result/main.py --calendar
 
 # Afficher les statistiques nationales
-python bts_result/main.py --stats
+python legacy/bts_result/main.py --stats
 
 # Télécharger la convocation
-python bts_result/main.py --id DOJO010100001 --convocation
+python legacy/bts_result/main.py --id DOJO010100001 --convocation
 ```
 
 ---

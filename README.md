@@ -153,13 +153,13 @@ Le projet est organisé en sous-modules spécialisés, chacun disposant de sa pr
 
 | Sous-module | Plateforme / Service | Description & Documentation |
 |---|---|---|
-| [`mesrs_services/`](mesrs_services/) | `inscription.mesrs-ci.net` | Vérification de paiement étudiant, catalogue DEXCO et annonces officielles MESRS. Voir le [README du module](mesrs_services/README.md). |
-| [`sigfne_documents/`](sigfne_documents/) | `agfne.sigfne.net` | Téléchargement des reçus de préinscription et fiches de cursus scolaire. Voir le [README du module](sigfne_documents/README.md). |
-| [`seconde_orientation/`](seconde_orientation/) | `orientation.mendob.ci` | Scraping d'identité, établissement d'accueil, série et téléchargement de fiches PDF 2nde. Voir le [README du module](seconde_orientation/README.md). |
-| [`sixieme_affectation/`](sixieme_affectation/) | `affectation.mendob.ci` | Scraping d'identité, d'établissement et téléchargement de fiches PDF 6ème. Voir le [README du module](sixieme_affectation/README.md). |
-| [`infas_convocation/`](infas_convocation/) | `infas.ciconcours.com` | Scraping des épreuves, centres et téléchargement des convocations INFAS. Voir le [README du module](infas_convocation/README.md). |
-| [`bts_result/`](bts_result/) | `bts.mesrs-ci.net` | Résultats BTS, calendrier officiel, statistiques nationales, filières et convocation. Voir le [README du module](bts_result/README.md). |
-| [`after_bac_orientation/`](after_bac_orientation/) | `bac.mesrs-ci.net` | Extraction et classement des filières et universités post-BAC. Voir le [README du module](after_bac_orientation/README.md). |
+| [`legacy/mesrs_services/`](legacy/mesrs_services/) | `inscription.mesrs-ci.net` | Vérification de paiement étudiant, catalogue DEXCO et annonces officielles MESRS. Voir le [README du module](legacy/mesrs_services/README.md). |
+| [`legacy/sigfne_documents/`](legacy/sigfne_documents/) | `agfne.sigfne.net` | Téléchargement des reçus de préinscription et fiches de cursus scolaire. Voir le [README du module](legacy/sigfne_documents/README.md). |
+| [`legacy/seconde_orientation/`](legacy/seconde_orientation/) | `orientation.mendob.ci` | Scraping d'identité, établissement d'accueil, série et téléchargement de fiches PDF 2nde. Voir le [README du module](legacy/seconde_orientation/README.md). |
+| [`legacy/sixieme_affectation/`](legacy/sixieme_affectation/) | `affectation.mendob.ci` | Scraping d'identité, d'établissement et téléchargement de fiches PDF 6ème. Voir le [README du module](legacy/sixieme_affectation/README.md). |
+| [`legacy/infas_convocation/`](legacy/infas_convocation/) | `infas.ciconcours.com` | Scraping des épreuves, centres et téléchargement des convocations INFAS. Voir le [README du module](legacy/infas_convocation/README.md). |
+| [`legacy/bts_result/`](legacy/bts_result/) | `bts.mesrs-ci.net` | Résultats BTS, calendrier officiel, statistiques nationales, filières et convocation. Voir le [README du module](legacy/bts_result/README.md). |
+| [`legacy/after_bac_orientation/`](legacy/after_bac_orientation/) | `bac.mesrs-ci.net` | Extraction et classement des filières et universités post-BAC. Voir le [README du module](legacy/after_bac_orientation/README.md). |
 | **DEXC METFPA** | `dexc.ci` | Gestion des acteurs, correcteurs, jurys et indemnités des examens techniques (CAP, BT, BP, BEP, CQP). Voir le [Wiki](wiki/Examens-et-Resultats.md#3-examens-professionnels--enseignement-technique--dexc-metfpa-dexcci). |
 | **DOBMFP & Orientation FP** | `dobmfp.com` / `orientationfp.com` | Bourses CI / Hors CI (BHCI) et résultats des post-orientations BTS / 3ème. Voir le [Wiki](wiki/Affectations-et-Orientations.md#4-orientations-professionnelles--bourses-metfpa-dobmfpcom--orientationfpcom). |
 | **IPNETP (SIGEC)** | `ipnetp.ci` / `sigec.ipnetp.cloud` | Inscription et convocations aux concours d'enseignants de l'enseignement technique. Voir le [Wiki](wiki/Concours-et-Convocations.md#4-concours-ipnetp--concours-professionnels-metfpa-ipnetpci--sigecipnetpcloud). |

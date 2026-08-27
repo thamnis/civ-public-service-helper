@@ -6,7 +6,7 @@ Ce chapitre présente les modules dédiés aux documents scolaires officiels (SI
 
 ## 1. Documents Scolaires SIGFNE / DESPS (`agfne.sigfne.net`)
 
-Le sous-module [`sigfne_documents/`](../sigfne_documents/README.md) permet de télécharger les documents officiels édités par la DESPS pour les élèves du secondaire.
+Le sous-module [`sigfne_documents/`](../legacy/sigfne_documents/README.md) permet de télécharger les documents officiels édités par la DESPS pour les élèves du secondaire.
 
 ### Types de documents disponibles
 | Code | Libellé |
@@ -36,17 +36,17 @@ print(res_cursus)
 ### Utilisation CLI
 ```bash
 # Reçu de préinscription
-python sigfne_documents/main.py --id 12345678A --type recu --annee 2627
+python legacy/sigfne_documents/main.py --id 12345678A --type recu --annee 2627
 
 # Fiche de cursus
-python sigfne_documents/main.py --id 12345678A --type cursus --annee 2526
+python legacy/sigfne_documents/main.py --id 12345678A --type cursus --annee 2526
 ```
 
 ---
 
 ## 2. Portail des Services & Inscriptions MESRS (`inscription.mesrs-ci.net`)
 
-Le sous-module [`mesrs_services/`](../mesrs_services/README.md) interagit avec le portail officiel de l'enseignement supérieur.
+Le sous-module [`mesrs_services/`](../legacy/mesrs_services/README.md) interagit avec le portail officiel de l'enseignement supérieur.
 
 ### Fonctionnalités
 - 💳 **Vérification de paiement étudiant** : Contrôle de la validité d'une transaction de paiement d'inscription / réinscription universitaire publique.
@@ -76,11 +76,11 @@ for item in news.get("announcements", []):
 ### Utilisation CLI
 ```bash
 # Vérifier un paiement
-python mesrs_services/main.py --matricule AAAB19920001 --code-paiement 1502168548958751 --numero-paiement 0102030405
+python legacy/mesrs_services/main.py --matricule AAAB19920001 --code-paiement 1502168548958751 --numero-paiement 0102030405
 
 # Afficher les actes DEXCO
-python mesrs_services/main.py --dexco
+python legacy/mesrs_services/main.py --dexco
 
 # Afficher les annonces officielles
-python mesrs_services/main.py --announcements
+python legacy/mesrs_services/main.py --announcements
 ```
