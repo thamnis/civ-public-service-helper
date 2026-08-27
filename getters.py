@@ -483,6 +483,81 @@ def simulate_bac_orientation(matricule: str) -> dict:
     return _sim(matricule)
 
 
+# ==============================================================================
+# ONECI SERVICES (Office National de l'État Civil et de l'Identification)
+# ==============================================================================
+
+def check_cni_status(numero_demande: str, nom: str, date_naissance: str, titre: str = "CNI", recaptcha_token: str = "") -> dict:
+    """
+    Vérifie le statut de production d'une CNI ou CRC depuis statut.oneci.ci.
+    """
+    from oneci_services.scraper import check_cni_status as _status
+    return _status(numero_demande, nom, date_naissance, titre, recaptcha_token)
+
+
+def find_numero_demande(nom: str, prenoms: str, date_naissance: str, lieu_naissance: str, titre: str = "CNI", recaptcha_token: str = "") -> dict:
+    """
+    Recherche un numéro de demande ONECI perdu.
+    """
+    from oneci_services.scraper import find_numero_demande as _find
+    return _find(nom, prenoms, date_naissance, lieu_naissance, titre, recaptcha_token)
+
+
+# ==============================================================================
+# DECO SERVICES (Examens Scolaires : BEPC / CEPE)
+# ==============================================================================
+
+def get_bepc_result(matricule: str) -> dict:
+    """
+    Consulte le résultat du BEPC.
+    """
+    from deco_services.scraper import get_bepc_result as _bepc
+    return _bepc(matricule)
+
+def get_cepe_result(matricule: str) -> dict:
+    """
+    Consulte le résultat du CEPE.
+    """
+    from deco_services.scraper import get_cepe_result as _cepe
+    return _cepe(matricule)
+
+
+# ==============================================================================
+# CEI SERVICES (Commission Electorale Indépendante)
+# ==============================================================================
+
+def check_voter_status(numero_cni: str) -> dict:
+    """
+    Vérifie le statut d'un électeur sur la liste électorale.
+    """
+    from cei_services.scraper import check_voter_status as _voter
+    return _voter(numero_cni)
+
+
+# ==============================================================================
+# MFP SERVICES (Ministère de la Fonction Publique)
+# ==============================================================================
+
+def get_concours_result(num_inscription: str) -> dict:
+    """
+    Vérifie le résultat d'un concours administratif.
+    """
+    from mfp_services.scraper import get_concours_result as _mfp
+    return _mfp(num_inscription)
+
+
+# ==============================================================================
+# JUSTICE SERVICES (e-Justice / Casier Judiciaire)
+# ==============================================================================
+
+def check_demande_status_justice(numero_demande: str, session_cookie: str = "") -> dict:
+    """
+    Vérifie le statut d'une demande de casier judiciaire.
+    """
+    from justice_services.scraper import check_demande_status as _justice
+    return _justice(numero_demande, session_cookie)
+
+
 def get_bac_orientation_result(matricule: str) -> dict:
     """
     Consulte le résultat de l'orientation d'un bachelier depuis bac.mesrs-ci.net.
