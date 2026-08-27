@@ -25,6 +25,8 @@ from after_bac_orientation.scraper import (
     get_bac_orientation_concours_admissibles,
     check_bac_orientation_payment,
     simulate_bac_orientation,
+    get_bac_orientation_result,
+    download_bac_orientation_fiche,
 )
 import getters
 
@@ -62,6 +64,22 @@ SAMPLE_PAYMENT_NOT_FOUND = """
     <div class="alert alert-danger">
         Désole , aucun bachelier trouvé. Veuillez entrer un matricule valide.
     </div>
+</body>
+</html>
+"""
+
+SAMPLE_RESULTAT = """
+<!DOCTYPE html>
+<html>
+<body>
+    <h3><b>M. (Mlle) DOE JOHN</b></h3>
+    <table style="border-collapse:collapse">
+        <tr><td>Série</td><td>: <b>C</b></td></tr>
+        <tr><td>Filière</td><td>: <b>INFORMATIQUE</b></td></tr>
+    </table>
+    <form action="/print/resultat.pdf" method="POST" target="_blank">
+        <input name="id" type="hidden" value="9999"/>
+    </form>
 </body>
 </html>
 """
@@ -116,6 +134,20 @@ class TestBacOrientationPaymentAndSimulator(unittest.TestCase):
     def test_empty_matricule(self):
         self.assertEqual(check_bac_orientation_payment("")["status"], "error")
         self.assertEqual(simulate_bac_orientation("")["status"], "error")
+
+    @patch("after_bac_orientation.scraper.Session")
+    def test_orientation_result(self, mock_session_cls):
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_response.text = SAMPLE_RESULTAT
+        mock_session.post.return_value = mock_response
+
+        res = get_bac_orientation_result("12345678A", session=mock_session)
+        self.assertEqual(res["status"], "success")
+        self.assertEqual(res["name"], "DOE JOHN")
+        self.assertEqual(res["details"]["Série"], "C")
+        self.assertEqual(res["internal_id"], "9999")
 
 
 class TestGettersAfterBacIntegration(unittest.TestCase):

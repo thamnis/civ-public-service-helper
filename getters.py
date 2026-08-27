@@ -483,6 +483,22 @@ def simulate_bac_orientation(matricule: str) -> dict:
     return _sim(matricule)
 
 
+def get_bac_orientation_result(matricule: str) -> dict:
+    """
+    Consulte le résultat de l'orientation d'un bachelier depuis bac.mesrs-ci.net.
+    """
+    from after_bac_orientation.scraper import get_bac_orientation_result as _res
+    return _res(matricule)
+
+
+def download_bac_orientation_fiche(matricule: str, output_dir: str = os.path.join(DOWNLOAD_DIR, "orientation_bac")) -> dict:
+    """
+    Télécharge la fiche officielle d'orientation au format PDF.
+    """
+    from after_bac_orientation.scraper import download_bac_orientation_fiche as _dl
+    return _dl(matricule, output_dir=output_dir)
+
+
 def get_pdf_path(sid: str, type: Literal['fco', 'fp', 'fi']):
     """
     Renvoie le chemin d'accès à un fichier PDF déjà téléchargé.

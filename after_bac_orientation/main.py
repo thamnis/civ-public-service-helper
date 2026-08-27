@@ -17,6 +17,8 @@ try:
         check_bac_orientation_payment,
         simulate_bac_orientation,
         get_bac_etablissement_sectors,
+        get_bac_orientation_result,
+        download_bac_orientation_fiche,
     )
 except ImportError:
     from scraper import (
@@ -25,6 +27,8 @@ except ImportError:
         check_bac_orientation_payment,
         simulate_bac_orientation,
         get_bac_etablissement_sectors,
+        get_bac_orientation_result,
+        download_bac_orientation_fiche,
     )
 
 # Assure l'affichage correct des caractères accentués sous Windows
@@ -44,6 +48,8 @@ def main():
     parser.add_argument("--payment", type=str, help="Vérifier le statut de paiement pour un matricule BAC")
     parser.add_argument("--simulate", type=str, help="Simuler l'orientation pour un matricule BAC")
     parser.add_argument("--sectors", type=str, help="Code établissement dont afficher les filières")
+    parser.add_argument("--resultat", type=str, help="Consulter le résultat de l'orientation pour un matricule")
+    parser.add_argument("--download", type=str, help="Télécharger la fiche d'orientation PDF pour un matricule")
     parser.add_argument("--save-json", type=str, help="Sauvegarder le résultat dans un fichier JSON")
 
     args = parser.parse_args()
@@ -101,6 +107,31 @@ def main():
         print("=" * 65)
         res = get_bac_etablissement_sectors(args.sectors)
         print(res)
+        return
+
+    # 6. Résultat d'orientation
+    if args.resultat:
+        print(f"🎓 RÉSULTAT ORIENTATION BAC ({args.resultat})")
+        print("=" * 65)
+        res = get_bac_orientation_result(args.resultat)
+        if res.get("status") == "success":
+            print(f"Nom : {res.get('name')}")
+            for k, v in res.get("details", {}).items():
+                print(f"{k}: {v}")
+        else:
+            print(f"⚠️ {res.get('message')}")
+        return
+
+    # 7. Téléchargement PDF
+    if args.download:
+        print(f"📥 TÉLÉCHARGEMENT FICHE ORIENTATION ({args.download})")
+        print("=" * 65)
+        res = download_bac_orientation_fiche(args.download)
+        if res.get("status") == "success":
+            print(f"✅ Fiche téléchargée avec succès !")
+            print(f"📁 Fichier : {res.get('filepath')}")
+        else:
+            print(f"⚠️ {res.get('message')}")
         return
 
     parser.print_help()

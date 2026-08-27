@@ -25,6 +25,8 @@ CONCOURS_URL = f"{BASE_URL}/orientation/concours"
 PAYMENT_INFO_URL = f"{BASE_URL}/info/paiement"
 SIMULATEUR_URL = f"{BASE_URL}/resultat/simulateur"
 ETABLISSEMENT_SECTORS_URL = f"{BASE_URL}/liste-filiere-etablissement"
+RESULTAT_URL = f"{BASE_URL}/consulter/resultat"
+PRINT_URL = f"{BASE_URL}/print/resultat.pdf"
 
 DEFAULT_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
@@ -265,4 +267,135 @@ def get_bac_etablissement_sectors(
         "status": "success",
         "etablissement_id": etablissement_id,
         "details": data,
+    }
+
+def get_bac_orientation_result(
+    matricule: str,
+    session: Optional[Session] = None,
+    timeout: int = 15,
+) -> Dict[str, Any]:
+    """
+    Consulte le résultat de l'orientation d'un bachelier (filière, établissement, etc.).
+
+    Args:
+        matricule (str): Matricule BAC du candidat.
+
+    Returns:
+        dict: Résultat de l'orientation avec les détails extraits et l'identifiant interne.
+    """
+    mat = str(matricule).strip().upper()
+    if not mat:
+        return {"status": "error", "message": "Le matricule BAC est obligatoire."}
+
+    http = session or Session()
+    try:
+        res = http.post(
+            RESULTAT_URL,
+            data={"matricule": mat},
+            headers=DEFAULT_HEADERS,
+            verify=False,
+            timeout=timeout,
+        )
+        res.raise_for_status()
+    except RequestException as e:
+        return {"status": "error", "message": f"Erreur de connexion : {e}"}
+
+    soup = BeautifulSoup(res.text, "html.parser")
+    
+    # Check if not found
+    alert = soup.find(class_=lambda c: c and any(k in str(c).lower() for k in ["alert", "card", "msg", "error", "danger"]))
+    alert_text = alert.get_text(" ", strip=True) if alert else ""
+    if "aucun bachelier" in res.text.lower() or "introuvable" in res.text.lower():
+        return {
+            "status": "not_found",
+            "matricule": mat,
+            "message": alert_text or "Aucun bachelier trouvé pour ce matricule.",
+        }
+
+    # Extract name
+    name = ""
+    for h3 in soup.find_all("h3"):
+        txt = h3.get_text(" ", strip=True)
+        if "M. (Mlle)" in txt or "M." in txt or "Mlle" in txt:
+            name = txt.replace("M. (Mlle)", "").replace("M.", "").replace("Mlle", "").strip()
+            break
+
+    # Extract details table
+    details = {}
+    table = soup.find("table", style=lambda s: s and "border-collapse" in str(s).lower())
+    if table:
+        for tr in table.find_all("tr"):
+            tds = tr.find_all("td")
+            if len(tds) >= 2:
+                key = tds[0].get_text(strip=True).strip()
+                val = tds[1].get_text(" ", strip=True).lstrip(":").strip()
+                details[key] = val
+
+    # Extract internal ID for printing
+    form = soup.find("form", action="/print/resultat.pdf")
+    internal_id = None
+    if form:
+        inp = form.find("input", attrs={"name": "id"})
+        if inp:
+            internal_id = inp.get("value")
+
+    return {
+        "status": "success",
+        "matricule": mat,
+        "name": name,
+        "details": details,
+        "internal_id": internal_id
+    }
+
+
+def download_bac_orientation_fiche(
+    matricule: str,
+    output_dir: str = "downloads/orientation_bac",
+    session: Optional[Session] = None,
+    timeout: int = 15,
+) -> Dict[str, Any]:
+    """
+    Télécharge la fiche officielle d'orientation au format PDF.
+
+    Args:
+        matricule (str): Matricule BAC du candidat.
+        output_dir (str): Dossier de sauvegarde pour le PDF.
+
+    Returns:
+        dict: Résultat du téléchargement avec le chemin du fichier.
+    """
+    http = session or Session()
+    # Etape 1: Recupérer l'ID interne
+    info = get_bac_orientation_result(matricule, session=http, timeout=timeout)
+    if info.get("status") != "success":
+        return info
+
+    internal_id = info.get("internal_id")
+    if not internal_id:
+        return {"status": "error", "message": "Identifiant interne introuvable pour générer le PDF."}
+
+    try:
+        res = http.post(
+            PRINT_URL,
+            data={"id": internal_id},
+            headers=DEFAULT_HEADERS,
+            verify=False,
+            timeout=timeout,
+        )
+        res.raise_for_status()
+    except RequestException as e:
+        return {"status": "error", "message": f"Erreur lors du téléchargement du PDF : {e}"}
+
+    import os
+    os.makedirs(output_dir, exist_ok=True)
+    filename = f"orientation_mesrs_{matricule}.pdf"
+    filepath = os.path.join(output_dir, filename)
+
+    with open(filepath, "wb") as f:
+        f.write(res.content)
+
+    return {
+        "status": "success",
+        "matricule": matricule,
+        "filepath": os.path.abspath(filepath)
     }
