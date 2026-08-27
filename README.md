@@ -7,14 +7,19 @@ Un outil Python pour interagir avec les services en ligne d'examens en Côte d'I
 
 ## 📚 Fonctionnalités principales
 
+- 🏛️ **Annuaire & Répertoire National** (+100 portails, ministères, institutions régaliennes et e-services).
+- 🩺 **Gov Health Check & Monitoring** : Vérification en temps réel de la disponibilité et du temps de réponse des sites de l'État.
+- ⚡ **API REST FastAPI & Swagger UI** (`/api/v1/...`) pour intégration web et mobile.
+- 💻 **CLI Unifiée** (`python -m civ_helper.cli`) pour interroger tous les services depuis le terminal.
 - 📥 Télécharger la **convocation** (BAC, BEPC, BTS, ...) depuis les plateformes officielles ivoiriennes.
 - 📑 Télécharger les **documents scolaires SIGFNE / DESPS** (Reçus de préinscription, Fiches de cursus) (`agfne.sigfne.net`).
 - 🏥 Récupérer et télécharger les **convocations aux concours INFAS** (`infas.ciconcours.com`).
 - 🏫 Consulter et télécharger la **fiche d'affectation en sixième** (`affectation.mendob.ci`).
 - 🎓 Consulter et télécharger la **fiche d'orientation en seconde** (`orientation.mendob.ci`).
 - 📊 Extraire les **informations** importantes depuis le fichier PDF (dates d’épreuves, origine du candidat, établissement, etc.).
-- 🧾 Consulter les **résultats** en ligne à partir du **matricule**.
+- 🧾 Consulter les **résultats** en ligne à partir du **matricule** (BEPC, CEPE, BTS, Concours MFP).
 - 📁 Gérer automatiquement les fichiers PDF localement.
+
 
 ---
 

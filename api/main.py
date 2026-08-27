@@ -193,3 +193,46 @@ def drena_directory():
 @app.get("/api/v1/men-delc/annuaires/iepp", tags=["MEN-DELC"])
 def iepp_directory():
     return handle_request(getters.get_iepp_directory)
+
+
+# ==========================================
+# 8. ANNUAIRE & MONITORING SANTÉ DES SERVICES
+# ==========================================
+from civ_helper.services import directory
+
+@app.get("/api/v1/directory/services", tags=["Annuaire & Santé des Services"])
+def list_services(
+    search: Optional[str] = Query(None, description="Recherche par mot-clé"),
+    category: Optional[str] = Query(None, description="Filtrer par catégorie"),
+    is_eservice: Optional[bool] = Query(None, description="Filtrer uniquement les démarches en ligne"),
+    limit: int = Query(50, ge=1, le=200, description="Nombre d'éléments"),
+    offset: int = Query(0, ge=0, description="Décalage pagination")
+):
+    return handle_request(
+        directory.get_services,
+        query=search,
+        category=category,
+        is_eservice=is_eservice,
+        limit=limit,
+        offset=offset
+    )
+
+@app.get("/api/v1/directory/services/{service_id}", tags=["Annuaire & Santé des Services"])
+def get_service_details(service_id: int):
+    svc = directory.get_service_by_id(service_id)
+    if not svc:
+        raise HTTPException(status_code=404, detail=f"Service ID {service_id} non trouvé")
+    return svc
+
+@app.get("/api/v1/directory/categories", tags=["Annuaire & Santé des Services"])
+def list_categories():
+    return handle_request(directory.get_categories)
+
+@app.get("/api/v1/directory/e-services", tags=["Annuaire & Santé des Services"])
+def list_e_services(limit: int = Query(50, ge=1, le=100)):
+    return handle_request(directory.get_e_services, limit=limit)
+
+@app.get("/api/v1/directory/health", tags=["Annuaire & Santé des Services"])
+def check_portal_health(target: str = Query(..., description="ID du service ou URL du portail")):
+    return handle_request(directory.check_service_health, url_or_id=target)
+

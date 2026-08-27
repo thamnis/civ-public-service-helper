@@ -689,7 +689,7 @@ def get_cafop_directors_directory(timeout: int = 15) -> dict:
     """
     Récupère l'annuaire des directeurs de CAFOP.
     """
-    from cafop_services.scraper import get_cafop_directors_directory as _cafop_dir
+    from legacy.cafop_services.scraper import get_cafop_directors_directory as _cafop_dir
     return _cafop_dir(timeout=timeout)
 
 
@@ -697,7 +697,7 @@ def get_textes_officiels(timeout: int = 15) -> dict:
     """
     Récupère tous les textes officiels (Arrêtés, Circulaires, etc.) depuis la DELC.
     """
-    from men_delc_services.scraper import get_textes_officiels as _textes
+    from legacy.men_delc_services.scraper import get_textes_officiels as _textes
     return _textes(timeout=timeout)
 
 
@@ -705,7 +705,7 @@ def get_drena_directory(timeout: int = 15) -> dict:
     """
     Récupère l'annuaire des DRENA depuis la DELC.
     """
-    from men_delc_services.scraper import get_drena_directory as _drena
+    from legacy.men_delc_services.scraper import get_drena_directory as _drena
     return _drena(timeout=timeout)
 
 
@@ -713,7 +713,7 @@ def get_iepp_directory(timeout: int = 15) -> dict:
     """
     Récupère l'annuaire des IEPP depuis la DELC.
     """
-    from men_delc_services.scraper import get_iepp_directory as _iepp
+    from legacy.men_delc_services.scraper import get_iepp_directory as _iepp
     return _iepp(timeout=timeout)
 
 
@@ -721,5 +721,48 @@ def get_primaire_nominations(type_nomination: Literal["directeur", "maitre_appli
     """
     Récupère les décisions de nomination au primaire.
     """
-    from men_delc_services.scraper import get_primaire_nominations as _primaire
+    from legacy.men_delc_services.scraper import get_primaire_nominations as _primaire
     return _primaire(type_nomination, timeout=timeout)
+
+
+# ==============================================================================
+# ANNUAIRE NATIONAL & MONITORING SANTÉ DES SERVICES PUBLICS
+# ==============================================================================
+
+def get_public_services(
+    query: Optional[str] = None,
+    category: Optional[str] = None,
+    is_eservice: Optional[bool] = None,
+    limit: int = 100,
+    offset: int = 0
+) -> dict:
+    """
+    Recherche et filtre dans l'annuaire national des services publics et institutions ivoiriennes.
+    """
+    from civ_helper.services.directory import get_services
+    return get_services(query=query, category=category, is_eservice=is_eservice, limit=limit, offset=offset)
+
+
+def get_service_categories() -> list:
+    """
+    Récupère la liste de toutes les catégories du répertoire avec le décompte des services.
+    """
+    from civ_helper.services.directory import get_categories
+    return get_categories()
+
+
+def get_e_services(limit: int = 50) -> list:
+    """
+    Récupère la liste des e-services et démarches en ligne dématérialisées.
+    """
+    from civ_helper.services.directory import get_e_services as _eservices
+    return _eservices(limit=limit)
+
+
+def check_portal_status(url_or_id: str) -> dict:
+    """
+    Teste la disponibilité en direct d'un portail public ou d'une institution (HTTP status, latence).
+    """
+    from civ_helper.services.directory import check_service_health
+    return check_service_health(url_or_id)
+

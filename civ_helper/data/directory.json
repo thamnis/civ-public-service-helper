@@ -1,0 +1,1447 @@
+[
+  {
+    "id": 1,
+    "name": "Portail officiel du Gouvernement de Côte d'Ivoire",
+    "url": "https://www.gouv.ci",
+    "description": "Portail central de la communication gouvernementale, offrant des informations sur les institutions, les politiques publiques, les services aux citoyens et aux entreprises.",
+    "history": "Mis en place pour centraliser en ligne la communication et les services de l'État ivoirien, le portail a été progressivement enrichi pour devenir un guichet numérique de référence.",
+    "interest": "Permet d’accéder à une vue d’ensemble des actions du gouvernement, aux communiqués officiels et à de nombreux services administratifs dématérialisés.",
+    "categories": [
+      "Gouvernement central",
+      "Portail national",
+      "Services en ligne"
+    ],
+    "is_eservice": true
+  },
+  {
+    "id": 2,
+    "name": "Présidence de la République de Côte d'Ivoire",
+    "url": "https://www.presidence.ci",
+    "description": "Institution publique ivoirienne intervenant dans la coordination de l’action de l’État, la définition des politiques nationales et l’information officielle.",
+    "history": "Créé pour structurer et moderniser la communication de la Présidence, le site est devenu un canal privilégié pour diffuser les discours et décisions présidentielles.",
+    "interest": "Indispensable pour suivre la vision politique du pays, les nominations, les grandes annonces et les activités internationales du Président.",
+    "categories": [
+      "Institution constitutionnelle",
+      "Exécutif",
+      "Communication officielle"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 3,
+    "name": "Primature de Côte d'Ivoire",
+    "url": "https://www.primature.ci",
+    "description": "Portail de la Primature présentant le Premier ministre, la composition du gouvernement, les politiques gouvernementales et les projets prioritaires.",
+    "history": "Développé pour accompagner le renforcement de la coordination gouvernementale et la transparence des actions du Premier ministre.",
+    "interest": "Utile pour comprendre le fonctionnement du gouvernement, les réformes en cours et les priorités sectorielles de l’exécutif.",
+    "categories": [
+      "Institution gouvernementale",
+      "Exécutif",
+      "Coordination de l’action publique"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 4,
+    "name": "Annuaire des services publics de Côte d'Ivoire",
+    "url": "https://annuaire.gouv.ci",
+    "description": "Annuaire officiel référençant les services publics ivoiriens, leurs coordonnées et, souvent, leurs sites internet.",
+    "history": "Conçu pour faciliter l’orientation des usagers dans le paysage administratif, l’annuaire a intégré progressivement un grand nombre de ministères, agences et collectivités.",
+    "interest": "Point d’entrée très utile pour retrouver un service public, un ministère, une agence ou une mairie et accéder à ses coordonnées et éventuels services en ligne.",
+    "categories": [
+      "Service transversal",
+      "Information administrative",
+      "Orientation"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 5,
+    "name": "Journal Officiel de la République de Côte d'Ivoire (JORCI)",
+    "url": "https://jorci.oneci.ci",
+    "description": "Plateforme de consultation et de téléchargement des journaux officiels contenant lois, décrets, actes administratifs et annonces légales.",
+    "history": "Dématérialisation du Journal officiel ivoirien pour faciliter l’accès aux normes juridiques et décisions réglementaires.",
+    "interest": "Indispensable pour les juristes, entreprises, chercheurs et citoyens souhaitant vérifier la légalité et la version officielle des textes.",
+    "categories": [
+      "Publication officielle",
+      "Droit",
+      "Normes juridiques"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 6,
+    "name": "Secrétariat Général du Gouvernement de Côte d'Ivoire",
+    "url": "https://www.sgg.gouv.ci",
+    "description": "Site du Secrétariat général du gouvernement, chargé de la préparation et de la publication des textes officiels et du Journal Officiel.",
+    "history": "Créé pour moderniser la diffusion des actes du gouvernement et mieux encadrer les procédures réglementaires.",
+    "interest": "Référence pour suivre la production normative gouvernementale et les informations sur le Journal officiel.",
+    "categories": [
+      "Administration centrale",
+      "Coordination juridique",
+      "Publications"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 7,
+    "name": "Assemblée nationale de Côte d'Ivoire",
+    "url": "https://www.assembleenationale.ci",
+    "description": "Site officiel de la Chambre basse du Parlement ivoirien, présentant les députés, les textes de loi, les commissions et l’actualité parlementaire.",
+    "history": "Créé pour rendre plus transparent le travail législatif, il s’est étoffé avec des rubriques de suivi des projets de loi et des comptes rendus.",
+    "interest": "Permet de suivre le processus législatif, l’agenda parlementaire et les positions des élus.",
+    "categories": [
+      "Institution constitutionnelle",
+      "Législatif",
+      "Droit"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 8,
+    "name": "Sénat de Côte d'Ivoire",
+    "url": "https://www.senat.ci",
+    "description": "Institution constitutionnelle, judiciaire ou de contrôle qui concourt à l’équilibre des pouvoirs, à la légalité, à la transparence et à la protection des droits.",
+    "history": "Mis en ligne après la création du Sénat comme seconde chambre, il vise à expliquer son rôle dans l’équilibre institutionnel.",
+    "interest": "Important pour suivre la seconde lecture de certains textes et la représentation des collectivités.",
+    "categories": [
+      "Institution constitutionnelle",
+      "Législatif",
+      "Collectivités territoriales"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 9,
+    "name": "Conseil Constitutionnel de Côte d'Ivoire",
+    "url": "https://www.conseil-constitutionnel.ci",
+    "description": "Site officiel de la plus haute juridiction constitutionnelle, chargé du contrôle de constitutionnalité et du contentieux électoral.",
+    "history": "Mis en place pour faciliter l’accès aux décisions, avis et communiqués du Conseil constitutionnel.",
+    "interest": "Ressource essentielle pour consulter les décisions relatives aux élections, aux lois et à l’interprétation de la Constitution.",
+    "categories": [
+      "Juridiction",
+      "Droit constitutionnel",
+      "Élections"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 10,
+    "name": "Cour Suprême de Côte d'Ivoire",
+    "url": "https://www.coursupreme.ci",
+    "description": "Institution constitutionnelle, judiciaire ou de contrôle qui concourt à l’équilibre des pouvoirs, à la légalité, à la transparence et à la protection des droits.",
+    "history": "Créé dans la dynamique de modernisation de la justice pour publier certaines décisions et informations sur le fonctionnement de la plus haute juridiction.",
+    "interest": "Permet aux juristes et citoyens de mieux comprendre la jurisprudence et l’organisation judiciaire.",
+    "categories": [
+      "Juridiction",
+      "Justice",
+      "Droit"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 11,
+    "name": "Cour des Comptes de Côte d'Ivoire",
+    "url": "https://www.courdescomptes.ci",
+    "description": "Institution constitutionnelle, judiciaire ou de contrôle qui concourt à l’équilibre des pouvoirs, à la légalité, à la transparence et à la protection des droits.",
+    "history": "Issue de la réforme des institutions financières publiques, son site vise à présenter ses missions et certains rapports publics.",
+    "interest": "Ressource importante pour la transparence budgétaire et le suivi de la gestion publique.",
+    "categories": [
+      "Institution de contrôle",
+      "Finances publiques",
+      "Transparence"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 12,
+    "name": "Médiateur de la République de Côte d'Ivoire",
+    "url": "https://www.mediateur.ci",
+    "description": "Autorité indépendante chargée de faciliter le règlement des litiges entre les citoyens et l’administration.",
+    "history": "Créée pour renforcer l’État de droit et améliorer les relations entre l’administration et les usagers, la fonction s’est appuyée sur un site pour expliquer les recours possibles.",
+    "interest": "Utile aux citoyens confrontés à des difficultés avec une administration et recherchant une voie de médiation.",
+    "categories": [
+      "Médiation institutionnelle",
+      "Droits des citoyens",
+      "Bonne gouvernance"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 13,
+    "name": "Commission Électorale Indépendante (CEI)",
+    "url": "https://www.cei.ci",
+    "description": "Institution constitutionnelle, judiciaire ou de contrôle qui concourt à l’équilibre des pouvoirs, à la légalité, à la transparence et à la protection des droits.",
+    "history": "Créée dans le cadre de la démocratisation du pays, la CEI a mis en place un site pour informer sur les scrutins, les listes électorales et les résultats.",
+    "interest": "Indispensable pour toute information officielle liée aux élections, inscriptions et résultats.",
+    "categories": [
+      "Autorité indépendante",
+      "Élections",
+      "Gouvernance"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 14,
+    "name": "Commission Nationale des Droits de l'Homme de Côte d'Ivoire (CNDH)",
+    "url": "https://www.cndh.ci",
+    "description": "Institution nationale chargée de la promotion et la protection des droits de l’homme en Côte d’Ivoire.",
+    "history": "Établie conformément aux principes de Paris, elle s’appuie sur un site pour publier ses rapports, avis et campagnes de sensibilisation.",
+    "interest": "Référence pour les questions de droits humains, les rapports thématiques et les recommandations aux autorités.",
+    "categories": [
+      "Droits de l’Homme",
+      "Institution indépendante",
+      "Veille et plaidoyer"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 15,
+    "name": "Ministère de l’Intérieur et de la Sécurité",
+    "url": "https://interieur.gouv.ci",
+    "description": "Site du ministère en charge de l’administration territoriale, de la sécurité intérieure, de l’état civil et de la gestion des collectivités.",
+    "history": "Mis en place pour centraliser l’information sur la sécurité, les élections locales, la protection civile et les réformes de l’état civil.",
+    "interest": "Important pour les informations sur les documents d’identité, la sécurité et les collectivités.",
+    "categories": [
+      "Ministère",
+      "Sécurité",
+      "Administration territoriale"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 16,
+    "name": "Ministère de la Justice et des Droits de l'Homme",
+    "url": "https://justice.gouv.ci",
+    "description": "Site du ministère en charge de la politique pénale, des juridictions, de l’administration pénitentiaire et de la promotion des droits de l’homme.",
+    "history": "Développé pour communiquer sur les réformes judiciaires et faciliter l’accès à l’information juridique.",
+    "interest": "Utile pour suivre les réformes de la justice, l’organisation des tribunaux et les campagnes sur les droits.",
+    "categories": [
+      "Ministère",
+      "Justice",
+      "Droits de l’Homme"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 17,
+    "name": "Ministère de la Défense",
+    "url": "https://defense.gouv.ci",
+    "description": "Site officiel du ministère en charge des forces armées et de la politique de défense.",
+    "history": "Créé pour renforcer la transparence sur l’action des forces armées, les réformes de défense et la coopération internationale.",
+    "interest": "Permet de consulter des informations sur l’organisation des forces armées et certaines opérations officielles.",
+    "categories": [
+      "Ministère",
+      "Défense",
+      "Sécurité"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 18,
+    "name": "Ministère des Affaires Étrangères",
+    "url": "de l’Intégration Africaine et de la Diaspora",
+    "description": "https://diplomatie.gouv.ci",
+    "history": "Site du ministère en charge de la politique étrangère, des relations diplomatiques et de la gestion des communautés ivoiriennes à l’étranger.",
+    "interest": "Renforcé avec la montée en puissance de la diplomatie économique et de la diaspora, le site présente les missions diplomatiques et services consulaires.",
+    "categories": [
+      "Référence pour les démarches consulaires",
+      "les représentations diplomatiques et la politique extérieure."
+    ],
+    "is_eservice": true
+  },
+  {
+    "id": 19,
+    "name": "Ministère de l'Économie",
+    "url": "des Finances et du Budget",
+    "description": "https://finances.gouv.ci",
+    "history": "Site du ministère responsable de la politique économique, budgétaire et financière de l’État.",
+    "interest": "Créé pour accroître la transparence économique, publier des indicateurs et communiquer sur la gestion des finances publiques.",
+    "categories": [
+      "Très utile pour les données macroéconomiques",
+      "les réformes budgétaires et les relations avec les bailleurs."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 20,
+    "name": "Ministère du Budget et du Portefeuille de l’État",
+    "url": "https://budget.gouv.ci",
+    "description": "Site du ministère superviseur du budget de l’État et des participations publiques.",
+    "history": "Ce site accompagne la réforme de la gestion axée sur les résultats et la publication de documents budgétaires.",
+    "interest": "Important pour les lois de finances, les documents budgétaires citoyens et la gestion des entreprises publiques.",
+    "categories": [
+      "Ministère",
+      "Budget",
+      "Gouvernance financière"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 21,
+    "name": "Direction Générale des Impôts - Portail e-impôts",
+    "url": "https://www.e-impots.gouv.ci",
+    "description": "Service ou portail public facilitant l’accès aux textes, à l’identification, aux formalités administratives, aux données ou à la protection des droits numériques.",
+    "history": "Lancée dans le cadre de la modernisation fiscale, elle vise à simplifier les démarches et améliorer le recouvrement.",
+    "interest": "Essentielle pour les entreprises et contribuables souhaitant gérer leurs obligations fiscales en ligne.",
+    "categories": [
+      "Administration fiscale",
+      "Services en ligne",
+      "Économie"
+    ],
+    "is_eservice": true
+  },
+  {
+    "id": 22,
+    "name": "Ministère du Commerce",
+    "url": "de l’Industrie et de la Promotion des PME",
+    "description": "https://commerce.gouv.ci",
+    "history": "Site du ministère chargé de la politique commerciale, industrielle et du soutien aux petites et moyennes entreprises.",
+    "interest": "Renforcé dans le cadre de la promotion du secteur privé et du climat des affaires.",
+    "categories": [
+      "Ressource pour connaître les politiques industrielles",
+      "les textes sur le commerce et les dispositifs d’appui aux PME."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 23,
+    "name": "Ministère de l’Agriculture et du Développement Rural",
+    "url": "https://agriculture.gouv.ci",
+    "description": "Site du ministère conduisant la politique agricole, la modernisation des exploitations et la sécurité alimentaire.",
+    "history": "Le site accompagne les réformes agricoles et les programmes de soutien aux filières.",
+    "interest": "Important pour les acteurs du monde rural, les statistiques agricoles et les programmes de subvention.",
+    "categories": [
+      "Ministère",
+      "Agriculture",
+      "Développement rural"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 24,
+    "name": "Ministère des Eaux et Forêts",
+    "url": "https://eauxetforets.gouv.ci",
+    "description": "Site du ministère en charge de la gestion durable des ressources forestières et hydriques.",
+    "history": "Créé dans un contexte de lutte contre la déforestation et pour la protection des aires protégées.",
+    "interest": "Référence pour les politiques de reboisement, les permis forestiers et les activités de conservation.",
+    "categories": [
+      "Ministère",
+      "Environnement",
+      "Ressources naturelles"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 25,
+    "name": "Ministère de la Santé, de l’Hygiène Publique et de la Couverture Maladie Universelle",
+    "url": "https://sante.gouv.ci",
+    "description": "Site du ministère chargé de la politique sanitaire, des structures de santé publiques et de la mise en œuvre de la couverture maladie universelle.",
+    "history": "Le site s’est développé avec les réformes sanitaires et les initiatives de couverture maladie.",
+    "interest": "Utile pour les campagnes de santé publique, les programmes de vaccination et les informations sur la CMU.",
+    "categories": [
+      "Ministère",
+      "Santé",
+      "Protection sociale"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 26,
+    "name": "Ministère de l'Éducation Nationale, de l'Alphabétisation et de l'Enseignement Technique",
+    "url": "https://education.gouv.ci",
+    "description": "Site du ministère responsable de l’enseignement primaire et secondaire, de l’alphabétisation et des examens nationaux.",
+    "history": "Renforcé avec la mise en ligne de nombreux services liés aux inscriptions, examens et statistiques scolaires.",
+    "interest": "Indispensable pour les parents, élèves et enseignants pour suivre les calendriers et résultats d’examens.",
+    "categories": [
+      "Ministère",
+      "Éducation",
+      "Formation de base"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 27,
+    "name": "Ministère de l’Enseignement Supérieur et de la Recherche Scientifique",
+    "url": "https://enseignement-superieur.gouv.ci",
+    "description": "Site du ministère chargé des universités, grandes écoles publiques et de la recherche scientifique.",
+    "history": "Accompagne la massification de l’enseignement supérieur et les réformes de gouvernance universitaire.",
+    "interest": "Ressource pour les étudiants, chercheurs et institutions académiques.",
+    "categories": [
+      "Ministère",
+      "Enseignement supérieur",
+      "Recherche"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 28,
+    "name": "Ministère de la Communication et de l’Économie Numérique",
+    "url": "https://www.communication.gouv.ci",
+    "description": "Institution publique ivoirienne intervenant dans la coordination de l’action de l’État, la définition des politiques nationales et l’information officielle.",
+    "history": "Département chargé de la politique publique de communication, issu de l’organisation gouvernementale post-indépendance.",
+    "interest": "Important pour les politiques numériques, la régulation des médias et les projets d’e-gouvernement.",
+    "categories": [
+      "Ministère",
+      "Communication",
+      "Numérique"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 29,
+    "name": "Ministère des Transports",
+    "url": "https://transports.gouv.ci",
+    "description": "Site du ministère en charge des transports routiers, maritimes, aériens et ferroviaires.",
+    "history": "Créé pour accompagner les grandes réformes du secteur des transports et les projets d’infrastructures.",
+    "interest": "Utile pour les informations sur la sécurité routière, les permis et les projets d’infrastructures.",
+    "categories": [
+      "Ministère",
+      "Transports",
+      "Infrastructures"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 30,
+    "name": "Ministère de la Construction, du Logement et de l’Urbanisme",
+    "url": "https://construction.gouv.ci",
+    "description": "Site du ministère responsable de la politique du logement, de l’urbanisme et de la construction.",
+    "history": "Renforcé avec les programmes de logements sociaux et la planification urbaine.",
+    "interest": "Important pour les textes sur le foncier urbain, les permis de construire et les projets d’aménagement.",
+    "categories": [
+      "Ministère",
+      "Urbanisme",
+      "Logement"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 31,
+    "name": "Ministère de la Fonction Publique et de la Modernisation de l'Administration",
+    "url": "https://fonctionpublique.gouv.ci",
+    "description": "Site du ministère chargé de la gestion statutaire et de la réforme de l’administration publique.",
+    "history": "Développé pour offrir des informations sur les concours administratifs et la gestion des carrières des fonctionnaires.",
+    "interest": "Référence pour les concours, avis de recrutement et textes régissant la fonction publique.",
+    "categories": [
+      "Ministère",
+      "Administration",
+      "Ressources humaines publiques"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 32,
+    "name": "Ministère de la Femme",
+    "url": "de la Famille et de l’Enfant",
+    "description": "https://femme.gouv.ci",
+    "history": "Site du ministère dédié aux questions de genre, de protection de l’enfance et de cohésion familiale.",
+    "interest": "Créé dans le cadre des politiques d’égalité et de protection des populations vulnérables.",
+    "categories": [
+      "Ressource pour les programmes en faveur des femmes",
+      "des familles et des enfants."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 33,
+    "name": "Ministère de l’Emploi et de la Protection Sociale",
+    "url": "https://emploi.gouv.ci",
+    "description": "Site du ministère chargé de la politique de l’emploi, du travail et de la protection sociale.",
+    "history": "Mis en place pour accompagner les politiques d’insertion professionnelle et de protection des travailleurs.",
+    "interest": "Utile pour les textes du travail, programmes d’emploi et dispositifs de protection sociale.",
+    "categories": [
+      "Ministère",
+      "Emploi",
+      "Protection sociale"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 34,
+    "name": "Autorité de Régulation des Télécommunications/TIC de Côte d’Ivoire (ARTCI)",
+    "url": "https://www.artci.ci",
+    "description": "Régulateur ou agence spécialisée chargé de fixer les règles sectorielles, contrôler les opérateurs, protéger les usagers et exécuter des programmes publics.",
+    "history": "Issue de la transformation de l’ATCI, l’ARTCI a développé un site pour publier décisions, licences et régulations.",
+    "interest": "Référence pour les opérateurs télécoms, fournisseurs d’accès et utilisateurs professionnels.",
+    "categories": [
+      "Régulateur",
+      "Télécommunications",
+      "Numérique"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 35,
+    "name": "Autorité Nationale de Régulation des Marchés Publics (ANRMP)",
+    "url": "https://www.anrmp.ci",
+    "description": "Régulateur ou agence spécialisée chargé de fixer les règles sectorielles, contrôler les opérateurs, protéger les usagers et exécuter des programmes publics.",
+    "history": "Créée pour renforcer la transparence et l’efficacité des procédures de passation de marchés, avec publication de nombreuses décisions.",
+    "interest": "Essentielle pour les entreprises soumissionnaires et l’analyse de la commande publique.",
+    "categories": [
+      "Régulateur",
+      "Marchés publics",
+      "Gouvernance"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 36,
+    "name": "Autorité Nationale de Régulation du Secteur de l’Électricité de Côte d’Ivoire (ANARE-CI)",
+    "url": "https://www.anare.ci",
+    "description": "Autorité chargée de la régulation du secteur de l’électricité, de la protection des usagers et du suivi des opérateurs.",
+    "history": "Son site a été conçu pour rendre accessibles les décisions régulatoires et l’information sur les tarifs et la qualité de service.",
+    "interest": "Important pour les consommateurs, producteurs indépendants et investisseurs dans l’énergie.",
+    "categories": [
+      "Régulateur",
+      "Énergie",
+      "Électricité"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 37,
+    "name": "Autorité de Régulation du Transport Intérieur (ARTI)",
+    "url": "https://www.arti.ci",
+    "description": "Autorité en charge de la régulation du transport intérieur, notamment routier.",
+    "history": "Créée dans le contexte de la réorganisation du secteur des transports et de la lutte contre le désordre routier.",
+    "interest": "Ressource pour les textes, agréments et décisions liées au transport intérieur.",
+    "categories": [
+      "Régulateur",
+      "Transports",
+      "Services publics"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 38,
+    "name": "Autorité Ivoirienne de Régulation Pharmaceutique (AIRP)",
+    "url": "https://www.airp.ci",
+    "description": "Autorité de régulation du secteur pharmaceutique et des produits de santé.",
+    "history": "Mise en place conformément aux exigences internationales de sécurisation de la chaîne du médicament.",
+    "interest": "Indispensable pour les laboratoires, grossistes, pharmacies et acteurs de la santé.",
+    "categories": [
+      "Régulateur",
+      "Santé",
+      "Médicaments"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 39,
+    "name": "Autorité de Régulation du Système de Récépissés d’Entreposage (ARRE)",
+    "url": "https://www.arre.ci",
+    "description": "Autorité supervisant le système de récépissés d’entreposage pour les produits agricoles.",
+    "history": "Créée pour favoriser la sécurisation et la financiarisation des stocks agricoles.",
+    "interest": "Utile pour les acteurs des filières agricoles et les institutions financières.",
+    "categories": [
+      "Régulateur",
+      "Agriculture",
+      "Financement"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 40,
+    "name": "Banque Centrale des États de l’Afrique de l’Ouest (BCEAO) - Siège régional Côte d’Ivoire",
+    "url": "https://www.bceao.int",
+    "description": "Institution monétaire commune aux pays de l’UEMOA, émettrice du franc CFA et régulatrice bancaire régionale.",
+    "history": "Créée en 1959, la BCEAO dispose d’une représentation en Côte d’Ivoire et publie de nombreuses données économiques.",
+    "interest": "Source majeure de statistiques monétaires et financières pour la Côte d’Ivoire.",
+    "categories": [
+      "Banque centrale",
+      "Finance",
+      "Statistiques"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 41,
+    "name": "Trésor Public de Côte d’Ivoire",
+    "url": "https://www.tresor.gouv.ci",
+    "description": "Organisme public ou parapublic qui contribue à la mobilisation des recettes, à la gestion des finances publiques, à la statistique ou au financement du développement.",
+    "history": "Modernisé avec la dématérialisation de certaines procédures et services aux usagers.",
+    "interest": "Ressource pour les obligations de l’État, la dette publique et certains paiements.",
+    "categories": [
+      "Finances publiques",
+      "Trésor",
+      "Budget"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 42,
+    "name": "Direction Générale des Douanes de Côte d’Ivoire",
+    "url": "https://www.douanes.ci",
+    "description": "Organisme public ou parapublic qui contribue à la mobilisation des recettes, à la gestion des finances publiques, à la statistique ou au financement du développement.",
+    "history": "Son site s’est développé avec la modernisation des procédures douanières et la facilitation du commerce.",
+    "interest": "Important pour les opérateurs économiques impliqués dans l’import-export.",
+    "categories": [
+      "Douanes",
+      "Commerce extérieur",
+      "Fiscalité"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 43,
+    "name": "Agence de Promotion de l’Investissement en Côte d’Ivoire (CEPICI)",
+    "url": "https://www.cepici.gouv.ci",
+    "description": "Guichet unique de promotion des investissements et de création d’entreprises.",
+    "history": "Créée pour améliorer le climat des affaires et centraliser les démarches administratives liées à l’investissement.",
+    "interest": "Indispensable pour les investisseurs et entrepreneurs nationaux ou étrangers.",
+    "categories": [
+      "Investissement",
+      "Entrepreneuriat",
+      "Agence publique"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 44,
+    "name": "Chambre de Commerce et d’Industrie de Côte d’Ivoire (CCI-CI)",
+    "url": "https://www.cci.ci",
+    "description": "Institution représentant les intérêts des entreprises et offrant des services aux acteurs économiques.",
+    "history": "Longtemps acteur historique du secteur privé, la Chambre a développé son site pour accroître la visibilité de ses services.",
+    "interest": "Utile pour l’appui aux entreprises, les formations et les informations économiques.",
+    "categories": [
+      "Organisation consulaire",
+      "Secteur privé",
+      "Appui aux entreprises"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 45,
+    "name": "Caisse Nationale de Prévoyance Sociale (CNPS)",
+    "url": "https://www.cnps.ci",
+    "description": "Organisme de protection sociale, de santé publique, de solidarité ou d’expertise sanitaire au service des personnes et des travailleurs.",
+    "history": "Son site a été développé pour permettre des services en ligne, la consultation des droits et la simplification des démarches.",
+    "interest": "Important pour les employeurs et assurés sociaux.",
+    "categories": [
+      "Sécurité sociale",
+      "Protection sociale",
+      "Organisme public"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 46,
+    "name": "Caisse Générale de Retraite des Agents de l’État (CGRAE)",
+    "url": "https://www.cgrae.ci",
+    "description": "Organisme de gestion des retraites de la fonction publique.",
+    "history": "Modernisé pour répondre aux besoins d’information des retraités et actifs publics.",
+    "interest": "Référence pour les pensions de retraite des agents de l’État.",
+    "categories": [
+      "Retraite",
+      "Fonction publique",
+      "Protection sociale"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 47,
+    "name": "Fonds de Développement de la Formation Professionnelle (FDFP)",
+    "url": "https://www.fdfp.ci",
+    "description": "Organisme de financement de la formation professionnelle continue et de l’apprentissage.",
+    "history": "Créé pour soutenir la montée en compétences de la main-d’œuvre ivoirienne.",
+    "interest": "Important pour les entreprises, centres de formation et salariés.",
+    "categories": [
+      "Formation professionnelle",
+      "Financement",
+      "Agence publique"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 48,
+    "name": "Agence Emploi Jeunes",
+    "url": "https://www.agenceemploijeunes.ci",
+    "description": "Agence nationale de promotion de l’emploi des jeunes et d’appui à l’insertion.",
+    "history": "Mise en place dans le cadre de la politique d’emploi des jeunes, le site sert de plateforme pour les offres et programmes.",
+    "interest": "Ressource clé pour les jeunes à la recherche d’emploi, de stages ou de formations.",
+    "categories": [
+      "Emploi",
+      "Jeunesse",
+      "Agence publique"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 49,
+    "name": "Office National d’Identification (ONI / ONECI)",
+    "url": "https://www.oneci.ci",
+    "description": "Service ou portail public facilitant l’accès aux textes, à l’identification, aux formalités administratives, aux données ou à la protection des droits numériques.",
+    "history": "Modernisé pour intégrer des procédures d’identification biométrique et des services en ligne.",
+    "interest": "Essentiel pour les démarches d’état civil, de voyage et électorales.",
+    "categories": [
+      "Identification",
+      "Documents officiels",
+      "Agence publique"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 50,
+    "name": "Office de la Protection du Citoyen (OPC)",
+    "url": "https://www.opc.ci",
+    "description": "Institution dédiée à la défense des droits des citoyens vis-à-vis de l’administration et des forces de l’ordre.",
+    "history": "Créée dans la dynamique de renforcement de l’État de droit et de la police de proximité.",
+    "interest": "Ressource pour signaler des abus ou violations de droits.",
+    "categories": [
+      "Droits des citoyens",
+      "Médiation",
+      "Institution indépendante"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 51,
+    "name": "Agence de Gestion des Routes (AGEROUTE)",
+    "url": "https://www.ageroute.ci",
+    "description": "Opérateur ou agence publique/parapublique responsable d’infrastructures, de réseaux essentiels, de transports, d’énergie, d’eau ou de protection environnementale.",
+    "history": "Créée pour professionnaliser la gestion des routes et optimiser les investissements dans les infrastructures.",
+    "interest": "Utile pour les informations sur les chantiers routiers et les grands projets d’infrastructures.",
+    "categories": [
+      "Infrastructures",
+      "Transports",
+      "Agence publique"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 52,
+    "name": "Société d’Exploitation et de Développement Aéroportuaire",
+    "url": "Aéronautique et Météorologique (SODEXAM)",
+    "description": "https://www.sodexam.aero",
+    "history": "Société en charge de la gestion aéroportuaire et des services de navigation aérienne et météorologique.",
+    "interest": "Évolue avec la modernisation des infrastructures aéroportuaires et des services de la météorologie.",
+    "categories": [
+      "Ressource pour les informations aéronautiques et météorologiques."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 53,
+    "name": "Société Multinationale de Gestion de l’Eau en Afrique de l’Ouest (SODECI)",
+    "url": "https://www.sodeci.ci",
+    "description": "Opérateur ou agence publique/parapublique responsable d’infrastructures, de réseaux essentiels, de transports, d’énergie, d’eau ou de protection environnementale.",
+    "history": "Partenaire historique de l’État dans le secteur de l’eau, son site diffuse informations techniques et commerciales.",
+    "interest": "Utile pour les abonnés et les informations sur les services d’eau.",
+    "categories": [
+      "Services publics",
+      "Eau potable",
+      "Entreprise concessionnaire"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 54,
+    "name": "Compagnie Ivoirienne d’Électricité (CIE)",
+    "url": "https://www.cie.ci",
+    "description": "Opérateur ou agence publique/parapublique responsable d’infrastructures, de réseaux essentiels, de transports, d’énergie, d’eau ou de protection environnementale.",
+    "history": "Acteur central du secteur énergétique, son site permet l’information et certaines démarches clients.",
+    "interest": "Important pour les abonnés et les informations sur les interruptions ou extensions de réseau.",
+    "categories": [
+      "Énergie",
+      "Électricité",
+      "Entreprise concessionnaire"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 55,
+    "name": "Agence Nationale de Gestion des Déchets (ANAGED)",
+    "url": "https://www.anaged.ci",
+    "description": "Régulateur ou agence spécialisée chargé de fixer les règles sectorielles, contrôler les opérateurs, protéger les usagers et exécuter des programmes publics.",
+    "history": "Créée pour assurer la coordination des acteurs de la filière déchets et la mise en œuvre de la politique nationale.",
+    "interest": "Ressource pour les collectivités et les opérateurs de gestion des déchets.",
+    "categories": [
+      "Environnement",
+      "Déchets",
+      "Agence publique"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 56,
+    "name": "Conseil du Café-Cacao",
+    "url": "https://www.conseilcafecacao.ci",
+    "description": "Organisme public ou interprofessionnel chargé d’une filière agricole, forestière, minière ou énergétique stratégique et du développement rural.",
+    "history": "Succède à d’anciennes structures de stabilisation, avec un site dédié à l’information des producteurs et acheteurs.",
+    "interest": "Référence pour les prix, politiques de filière et programmes de soutien aux producteurs.",
+    "categories": [
+      "Filière agricole",
+      "Régulation",
+      "Exportations"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 57,
+    "name": "Agence Nationale d’Appui au Développement Rural (ANADER)",
+    "url": "https://www.anader.ci",
+    "description": "Organisme public ou interprofessionnel chargé d’une filière agricole, forestière, minière ou énergétique stratégique et du développement rural.",
+    "history": "Créée pour accompagner la modernisation de l’agriculture ivoirienne et la diffusion de l’innovation.",
+    "interest": "Importante pour les producteurs agricoles et les projets ruraux.",
+    "categories": [
+      "Agriculture",
+      "Développement rural",
+      "Agence publique"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 58,
+    "name": "Bureau National d’Études Techniques et de Développement (BNETD)",
+    "url": "https://www.bnetd.ci",
+    "description": "Organisme d’ingénierie publique et de conseil en développement.",
+    "history": "Créé pour donner à l’État une capacité d’études et de maîtrise d’ouvrage dans les projets de développement.",
+    "interest": "Ressource pour les études, projets et données techniques.",
+    "categories": [
+      "Études et ingénierie",
+      "Développement",
+      "Organisme public"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 59,
+    "name": "Organisme National de Normalisation et de Certification (CODINORM)",
+    "url": "https://www.codinorm.ci",
+    "description": "Organisme chargé de la normalisation, de la certification des produits et de la promotion de la qualité.",
+    "history": "Créé pour mettre en place un système national de normalisation conforme aux standards internationaux.",
+    "interest": "Important pour les entreprises, laboratoires et organismes de certification.",
+    "categories": [
+      "Normalisation",
+      "Qualité",
+      "Organisme technique"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 60,
+    "name": "Portail Open Data de l'État de Côte d'Ivoire",
+    "url": "https://data.gouv.ci",
+    "description": "Plateforme nationale de données ouvertes mettant à disposition les jeux de données publics.",
+    "history": "Initiative pour promouvoir la transparence et l'innovation par la réutilisation des données publiques.",
+    "interest": "Indispensable pour les chercheurs",
+    "categories": [
+      "data scientists et développeurs."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 61,
+    "name": "PSGouv - Programme Social du Gouvernement",
+    "url": "https://psgouv.ci",
+    "description": "Portail officiel du Programme Social du Gouvernement ivoirien.",
+    "history": "Mis en place pour suivre les actions prioritaires à fort impact social pour les populations.",
+    "interest": "Permet de suivre les réalisations sociales (eau",
+    "categories": [
+      "électricité"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 62,
+    "name": "CICG - Centre d'Information et de Communication Gouvernementale",
+    "url": "https://cicg.gouv.ci",
+    "description": "Organe central de la communication institutionnelle du gouvernement.",
+    "history": "Coordonne l'information officielle diffusée auprès des citoyens et des médias.",
+    "interest": "Source directe pour les communiqués de presse et alertes gouvernementales.",
+    "categories": [
+      "Portail national",
+      "Communication officielle"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 63,
+    "name": "Direction Générale du Portefeuille de l'État (DGPE)",
+    "url": "https://dgpe.gouv.ci",
+    "description": "Structure assurant la gouvernance et le suivi des entreprises publiques et sociétés d'État.",
+    "history": "Créée pour piloter la rentabilité et la bonne gouvernance du portefeuille public.",
+    "interest": "Référence pour les rapports sur les entreprises publiques et privatisations.",
+    "categories": [
+      "Ministère",
+      "Finances publiques",
+      "Entreprises publiques"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 64,
+    "name": "Gendarmerie Nationale de Côte d'Ivoire",
+    "url": "https://gendarmerie.gouv.ci",
+    "description": "Force militaire chargée du maintien de l'ordre, de la sécurité publique et de la police judiciaire.",
+    "history": "Institution historique assurant la sûreté des personnes et des biens sur le territoire.",
+    "interest": "Utile pour les recrutements",
+    "categories": [
+      "alertes et coordonnées des brigades."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 65,
+    "name": "Cour de Cassation de Côte d'Ivoire",
+    "url": "https://courdecassation.ci",
+    "description": "Plus haute juridiction de l'ordre judiciaire pour les matières civiles, commerciales, pénales et sociales.",
+    "history": "Créée suite aux réformes constitutionnelles pour scinder les compétences suprêmes.",
+    "interest": "Essentielle pour la jurisprudence et les pourvois en cassation.",
+    "categories": [
+      "Pouvoir judiciaire",
+      "Juridiction suprême"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 66,
+    "name": "Conseil d'État de Côte d'Ivoire",
+    "url": "https://web.conseil-etat.ci",
+    "description": "Plus haute juridiction de l'ordre administratif, juge suprême des litiges entre l'administration et les citoyens.",
+    "history": "Institution garantissant la légalité des actes administratifs et du contentieux d'État.",
+    "interest": "Ressource clé pour le droit administratif et les recours.",
+    "categories": [
+      "Pouvoir judiciaire",
+      "Juridiction administrative"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 67,
+    "name": "Inspection Générale de l'État (IGE)",
+    "url": "https://www.igeci.org",
+    "description": "Institution supérieure de contrôle administratif, financier et de gouvernance publique.",
+    "history": "Chargée de l'audit et de l'inspection de l'ensemble des administrations publiques.",
+    "interest": "Garante de la probité",
+    "categories": [
+      "de l'orthodoxie financière et de la bonne gestion."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 68,
+    "name": "Haute Autorité pour la Bonne Gouvernance (HABG)",
+    "url": "https://habg.ci",
+    "description": "Institution chargée de la prévention et de la lutte contre la corruption et les infractions assimilées.",
+    "history": "Créée pour promouvoir l'intégrité",
+    "interest": "recevoir les déclarations de patrimoine et traiter les dénonciations.",
+    "categories": [
+      "Canal officiel pour le signalement des actes de corruption."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 69,
+    "name": "Conseil Économique",
+    "url": "Social",
+    "description": "Environnemental et Culturel (CESEC)",
+    "history": "https://lecesec.gouv.ci",
+    "interest": "Assemblée consultative apportant son expertise sur les politiques économiques et sociétales.",
+    "categories": [
+      "Donne des avis consultatifs au Président et au Parlement sur les projets de réformes."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 70,
+    "name": "Chambre Nationale des Rois et Chefs Traditionnels (CNRCT)",
+    "url": "https://cnrct.ci",
+    "description": "Institution constitutionnelle valorisant la chefferie traditionnelle et la cohésion sociale.",
+    "history": "Contribue au règlement pacifique des conflits communautaires et à la préservation des traditions.",
+    "interest": "Important pour la gouvernance coutumière et la médiation locale.",
+    "categories": [
+      "Institution consultative",
+      "Chefferie traditionnelle"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 71,
+    "name": "Service Public CI - Portail des démarches administratives",
+    "url": "https://servicepublic.gouv.ci",
+    "description": "Guichet numérique unique répertoriant et guidant l'usager dans toutes ses démarches citoyennes et professionnelles.",
+    "history": "Conçu pour dématérialiser et simplifier la relation usager-administration.",
+    "interest": "Point d'accès incontournable pour les formulaires",
+    "categories": [
+      "conditions et procédures officielles."
+    ],
+    "is_eservice": true
+  },
+  {
+    "id": 72,
+    "name": "Portail fiscal e-Impôts",
+    "url": "https://e-impots.gouv.ci",
+    "description": "Plateforme de télédéclaration et télépaiement des impôts et taxes en Côte d'Ivoire.",
+    "history": "Permet aux entreprises et particuliers de déclarer et payer leurs impôts 24h/24.",
+    "interest": "Essentiel pour la conformité fiscale et l'obtention des attestations fiscales.",
+    "categories": [
+      "e-Service public",
+      "Fiscalité",
+      "Télépaiement"
+    ],
+    "is_eservice": true
+  },
+  {
+    "id": 73,
+    "name": "e-Justice Côte d'Ivoire",
+    "url": "https://e-justice.ci",
+    "description": "Portail numérique des services judiciaires (demande de casier judiciaire, suivi d'actes).",
+    "history": "Développé pour moderniser la justice et réduire les déplacements des justiciables.",
+    "interest": "Permet de commander en ligne son extrait de casier judiciaire.",
+    "categories": [
+      "e-Service public",
+      "Justice",
+      "Casier judiciaire"
+    ],
+    "is_eservice": true
+  },
+  {
+    "id": 74,
+    "name": "e-Passeport (Passeports Officiels)",
+    "url": "https://passeportsofficiels.diplomatie.gouv.ci",
+    "description": "Système de prise de rendez-vous et pré-enrôlement pour les passeports diplomatiques et de service.",
+    "history": "Géré par le Ministère des Affaires Étrangères pour faciliter la délivrance des passeports officiels.",
+    "interest": "Indispensable pour les fonctionnaires et diplomates en mission.",
+    "categories": [
+      "e-Service public",
+      "Diplomatie",
+      "Documents de voyage"
+    ],
+    "is_eservice": true
+  },
+  {
+    "id": 75,
+    "name": "SIGFAE - Espace Fonctionnaire",
+    "url": "https://espacefonctionnaire.fonctionpublique.gouv.ci",
+    "description": "Plateforme intégrée de gestion des agents et fonctionnaires de l'État.",
+    "history": "Permet aux fonctionnaires de consulter leur solde",
+    "interest": "avancements",
+    "categories": [
+      "actes et attestations administratives."
+    ],
+    "is_eservice": true
+  },
+  {
+    "id": 76,
+    "name": "SIGFU - Système Intégré de Gestion du Foncier Urbain",
+    "url": "https://sigfu.gouv.ci",
+    "description": "Plateforme officielle de suivi et de dématérialisation des titres fonciers et Arrêtés de Concession Définitive (ACD).",
+    "history": "Créée pour sécuriser les transactions foncières et simplifier l'obtention des actes de propriété.",
+    "interest": "Ressource fondamentale pour propriétaires",
+    "categories": [
+      "acquéreurs et promoteurs immobiliers."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 77,
+    "name": "GUCE - Guichet Unique du Commerce Extérieur",
+    "url": "https://guce.gouv.ci",
+    "description": "Plateforme numérique centralisant toutes les formalités d'importation et d'exportation.",
+    "history": "Raccourcit les délais logistiques et réunit douanes",
+    "interest": "transitaires",
+    "categories": [
+      "banques et ministères."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 78,
+    "name": "Centre de Gestion Intégrée (CGI - Transports)",
+    "url": "https://eservices.cgi.ci/avit/#/public",
+    "description": "Portail des démarches liées au permis de conduire, cartes grises et immatriculations.",
+    "history": "Modernise l'ensemble des titres de transport et fluidifie les démarches usagers.",
+    "interest": "Essentiel pour conducteurs",
+    "categories": [
+      "propriétaires de véhicules et transporteurs."
+    ],
+    "is_eservice": true
+  },
+  {
+    "id": 79,
+    "name": "CNPS - E-Services Caisse Nationale de Prévoyance Sociale",
+    "url": "https://e.cnps.ci",
+    "description": "Portail de télédéclaration des cotisations sociales et suivi des prestations (retraite, maternité, accidents).",
+    "history": "Permet aux employeurs et assurés du secteur privé de gérer leurs droits sociaux en ligne.",
+    "interest": "Outil clé pour la protection sociale des travailleurs.",
+    "categories": [
+      "Protection sociale",
+      "e-Service public",
+      "Retraite"
+    ],
+    "is_eservice": true
+  },
+  {
+    "id": 80,
+    "name": "CNAM - Enrôlement Couverture Maladie Universelle (CMU)",
+    "url": "https://ipscnam.ci/enrolement-cmu/",
+    "description": "Plateforme de pré-enrôlement, géolocalisation des sites et suivi de la carte CMU.",
+    "history": "Pilote l'adhésion de tous les résidents à l'assurance santé obligatoire ivoirienne.",
+    "interest": "Point d'accès pour vérifier la validité de sa couverture santé.",
+    "categories": [
+      "Protection sociale",
+      "Santé",
+      "e-Service public"
+    ],
+    "is_eservice": true
+  },
+  {
+    "id": 81,
+    "name": "Université Félix Houphouët-Boigny (UFHB - Cocody)",
+    "url": "https://univ-fhb.edu.ci",
+    "description": "Principale et plus ancienne université publique de Côte d'Ivoire.",
+    "history": "Pôle d'excellence académique pluridisciplinaire formant des dizaines de milliers d'étudiants.",
+    "interest": "Portail pour les inscriptions",
+    "categories": [
+      "programmes pédagogiques et résultats."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 82,
+    "name": "Université Nangui Abrogoua (UNA - Abobo-Adjamé)",
+    "url": "https://www.univ-na.ci",
+    "description": "Université publique spécialisée en sciences fondamentales, environnementales et agronomiques.",
+    "history": "Reconnue pour sa recherche en sciences naturelles et technologies appliquées.",
+    "interest": "Informations sur les filières scientifiques et admissions.",
+    "categories": [
+      "Enseignement supérieur",
+      "Université",
+      "Sciences"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 83,
+    "name": "Institut National Polytechnique Félix Houphouët-Boigny (INP-HB - Yamoussoukro)",
+    "url": "https://inphb.ci",
+    "description": "Établissement d'élite formant les ingénieurs, cadres supérieurs et techniciens de l'industrie et du commerce.",
+    "history": "Regroupe plusieurs grandes écoles d'ingénieurs de référence sous-régionale.",
+    "interest": "Indispensable pour les concours d'entrée et programmes d'ingénierie.",
+    "categories": [
+      "Enseignement supérieur",
+      "Grandes Écoles",
+      "Ingénierie"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 84,
+    "name": "Université Virtuelle de Côte d'Ivoire (UVCI)",
+    "url": "https://www.uvci.edu.ci",
+    "description": "Université publique innovante dédiée à l'enseignement supérieur à distance et aux compétences numériques.",
+    "history": "Pionnière du e-learning et de la recherche en technologies émergentes (IA",
+    "interest": "blockchain",
+    "categories": [
+      "cloud)."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 85,
+    "name": "Université Jean Lorougnon Guédé (UJLOG - Daloa)",
+    "url": "https://www.ujlog.ci",
+    "description": "Université publique axée sur l'agroforesterie, l'environnement et le développement durable.",
+    "history": "Pôle universitaire majeur du centre-ouest ivoirien.",
+    "interest": "Portail d'orientation et d'informations universitaires.",
+    "categories": [
+      "Enseignement supérieur",
+      "Agroforesterie"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 86,
+    "name": "District Autonome d'Abidjan",
+    "url": "https://www.abidjan-da.ci",
+    "description": "Collectivité territoriale décentralisée à statut particulier regroupant les 13 communes du Grand Abidjan.",
+    "history": "Pilote les grands projets d'aménagement urbain",
+    "interest": "environnementaux et sociaux de la métropole.",
+    "categories": [
+      "Ressource sur les grands projets urbains et la vie métropolitaine."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 87,
+    "name": "District Autonome de Yamoussoukro",
+    "url": "https://www.yamoussoukro.district.ci",
+    "description": "Collectivité territoriale en charge du développement de la capitale politique et administrative.",
+    "history": "Coordonne l'urbanisme",
+    "interest": "le tourisme mémoriel et les infrastructures de Yamoussoukro.",
+    "categories": [
+      "Informations sur la capitale et les projets locaux."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 88,
+    "name": "Radiodiffusion Télévision Ivoirienne (RTI)",
+    "url": "https://www.rti.ci",
+    "description": "Groupe audiovisuel public de référence (RTI 1, RTI 2, Radio Côte d'Ivoire, RTI Info).",
+    "history": "Diffuse l'information nationale et internationale",
+    "interest": "émissions éducatives et culturelles.",
+    "categories": [
+      "Accès aux journaux télévisés"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 89,
+    "name": "CI-ENERGIES (Côte d'Ivoire Énergies)",
+    "url": "https://www.cienergies.ci",
+    "description": "Société d'État chargée de la planification et du développement des infrastructures électriques.",
+    "history": "Assure les investissements dans les barrages",
+    "interest": "centrales thermiques et le réseau haute tension.",
+    "categories": [
+      "Référence pour les projets énergétiques et l'électrification rurale."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 90,
+    "name": "Fonds d'Entretien Routier (FER)",
+    "url": "https://fer.ci",
+    "description": "Organisme public finançant l'entretien, la réhabilitation du réseau routier et gérant les postes de péage.",
+    "history": "Assure la durabilité des infrastructures routières et autoroutières.",
+    "interest": "Informations sur les tarifs des péages et le réseau national.",
+    "categories": [
+      "Infrastructures",
+      "Transports",
+      "Péages"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 91,
+    "name": "Société des Transports Abidjanais (SOTRA)",
+    "url": "https://sotra.ci",
+    "description": "Opérateur public historique du transport urbain multimodal (Bus, Bateaux-bus, Express) à Abidjan.",
+    "history": "Transporte quotidiennement des centaines de milliers d'usagers dans toute la métropole.",
+    "interest": "Indispensable pour les lignes",
+    "categories": [
+      "tarifs"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 92,
+    "name": "Direction Générale de la Police Nationale",
+    "url": "https://www.police.gouv.ci",
+    "description": "Direction générale chargée du maintien de la sécurité publique, de la police administrative et judiciaire.",
+    "history": "Gère les commissariats",
+    "interest": "la sécurité urbaine et les interventions d'urgence.",
+    "categories": [
+      "Canal d'alerte"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 93,
+    "name": "Office National de la Protection Civile (ONPC)",
+    "url": "https://www.onpc.ci",
+    "description": "Organisme en charge de la protection civile, des centres de secours d'urgence (pompiers civils).",
+    "history": "Coordonne la prévention des risques majeurs et la réponse aux inondations et incendies.",
+    "interest": "Informations de secours et prévention des catastrophes.",
+    "categories": [
+      "Sécurité",
+      "Protection Civile",
+      "Pompiers"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 94,
+    "name": "Institut National de Formation Judiciaire (INFJ)",
+    "url": "https://www.infj.ci",
+    "description": "Grande école publique formant les magistrats, greffiers, éducateurs et personnels pénitentiaires.",
+    "history": "Garante de la compétence et de la déontologie du corps judiciaire ivoirien.",
+    "interest": "Informations sur les concours de la magistrature et du greffe.",
+    "categories": [
+      "Sécurité",
+      "Justice",
+      "Formation"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 95,
+    "name": "Port Autonome d'Abidjan (PAA)",
+    "url": "https://www.portabidjan.ci",
+    "description": "Premier port thonier et hub logistique majeur de la façade atlantique africaine.",
+    "history": "Moteur de l'économie nationale concentrant la majorité des échanges commerciaux maritimes.",
+    "interest": "Indispensable pour le suivi des navires",
+    "categories": [
+      "statistiques portuaires et tarifs."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 96,
+    "name": "Port Autonome de San Pedro (PASP)",
+    "url": "https://www.portdesanpedro.ci",
+    "description": "Deuxième port de Côte d'Ivoire et premier port mondial pour l'exportation de fèves de cacao.",
+    "history": "Hub logistique stratégique pour l'ouest du pays et les pays de l'hinterland.",
+    "interest": "Informations sur le trafic maritime et les terminaux minéraliers/cacaoyers.",
+    "categories": [
+      "Infrastructures",
+      "Portuaire",
+      "Exportations"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 97,
+    "name": "Office Ivoirien des Parcs et Réserves (OIPR)",
+    "url": "https://www.oipr.ci",
+    "description": "Agence publique veillant à la préservation et à la valorisation des 8 parcs nationaux et 6 réserves naturelles.",
+    "history": "Protège la biodiversité exceptionnelle (Taï",
+    "interest": "Comoé",
+    "categories": [
+      "Banco"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 98,
+    "name": "Agence Nationale de l'Environnement (ANDE)",
+    "url": "https://www.ande.ci",
+    "description": "Autorité environnementale veillant aux Études d'Impact Environnemental et Social (EIES).",
+    "history": "Veille à l'intégration des critères écologiques dans tous les projets de développement.",
+    "interest": "Ressource pour les audits écologiques et la conformité industrielle.",
+    "categories": [
+      "Environnement",
+      "Écologie",
+      "Régulation"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 99,
+    "name": "Conseil du Coton et de l'Anacarde",
+    "url": "https://www.conseilcotonanacarde.ci",
+    "description": "Organisme régulateur et de développement des filières coton et noix de cajou.",
+    "history": "Supervise la fixation des prix bord champ",
+    "interest": "la transformation locale et les exportations.",
+    "categories": [
+      "Référence pour les producteurs"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 100,
+    "name": "Fonds Interprofessionnel pour la Recherche et le Conseil Agricoles (FIRCA)",
+    "url": "https://www.firca.ci",
+    "description": "Fonds finançant la recherche appliquée, la vulgarisation et les formations dans les filières végétales et animales.",
+    "history": "Favorise l'amélioration des rendements et la résilience agricole face au climat.",
+    "interest": "Ressource pour les coopératives et innovateurs agricoles.",
+    "categories": [
+      "Agriculture",
+      "Financement",
+      "Recherche agricole"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 101,
+    "name": "Société de Développement des Forêts (SODEFOR)",
+    "url": "https://www.sodefor.ci",
+    "description": "Société d'État chargée de la protection, de l'aménagement et du reboisement des forêts classées.",
+    "history": "Lutte contre le déboisement clandestin et développe la foresterie durable.",
+    "interest": "Important pour le bois certifié",
+    "categories": [
+      "le reboisement et les pépinières."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 102,
+    "name": "PETROCI Holding",
+    "url": "https://www.petroci.ci",
+    "description": "Société nationale des opérations pétrolières de Côte d'Ivoire.",
+    "history": "Pilote l'exploration",
+    "interest": "la production offshore",
+    "categories": [
+      "le raffinage et la distribution d'hydrocarbures et de gaz naturel."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 103,
+    "name": "Agence Ivoirienne de Presse (AIP)",
+    "url": "https://www.aip.ci",
+    "description": "Agence nationale de presse publique couvrant l'actualité de toutes les régions de Côte d'Ivoire.",
+    "history": "Fournit des dépêches d'actualité impartiales et vérifiées aux médias du monde entier.",
+    "interest": "Source quotidienne d'informations locales et nationales.",
+    "categories": [
+      "Média public",
+      "Presse",
+      "Actualités"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 104,
+    "name": "Fraternité Matin (FratMat)",
+    "url": "https://www.fratmat.info",
+    "description": "Quotidien national de référence et groupe de presse public historique.",
+    "history": "Offre des reportages approfondis",
+    "interest": "analyses politiques",
+    "categories": [
+      "culturelles et sportives."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 105,
+    "name": "Haute Autorité de la Communication Audiovisuelle (HACA)",
+    "url": "https://www.haca.ci",
+    "description": "Régulateur des chaînes de télévision, stations de radio et distributeurs audiovisuels.",
+    "history": "Attribue les fréquences",
+    "interest": "veille au respect du pluralisme et de l'éthique dans les médias.",
+    "categories": [
+      "Ressource pour les agréments de diffusion et décisions réglementaires."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 106,
+    "name": "Côte d'Ivoire Tourisme",
+    "url": "https://www.cotedivoiretourisme.ci",
+    "description": "Office national chargé de la promotion touristique et du rayonnement de la marque 'Sublime Côte d'Ivoire'.",
+    "history": "Promeut les circuits culturels",
+    "interest": "plages",
+    "categories": [
+      "événements d'affaires et patrimoine local."
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 107,
+    "name": "Institut National Supérieur des Arts et de l'Action Culturelle (INSAAC)",
+    "url": "https://www.insaac.edu.ci",
+    "description": "Établissement supérieur formant les artistes, musiciens, plasticiens, comédiens et gestionnaires culturels.",
+    "history": "Haut lieu de formation artistique et de valorisation des patrimoines vivants africains.",
+    "interest": "Informations sur les filières artistiques et spectacles.",
+    "categories": [
+      "Culture",
+      "Arts",
+      "Enseignement supérieur"
+    ],
+    "is_eservice": false
+  },
+  {
+    "id": 108,
+    "name": "Bibliothèque Nationale de Côte d'Ivoire",
+    "url": "https://www.bibliothequenationale.ci",
+    "description": "Institution conservatrice du dépôt légal et du patrimoine documentaire ivoirien.",
+    "history": "Rassemble",
+    "interest": "numérise et préserve la mémoire littéraire et scientifique nationale.",
+    "categories": [
+      "Accès au catalogue des livres"
+    ],
+    "is_eservice": false
+  }
+]
