@@ -1,0 +1,3 @@
+"""
+MEN-DELC Services Module
+"""

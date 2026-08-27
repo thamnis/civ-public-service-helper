@@ -77,6 +77,7 @@ def download_sigfne_document(
     filename: Optional[str] = None,
     session: Optional[Session] = None,
     timeout: int = 15,
+    url_override: Optional[str] = None,
 ) -> Dict[str, Any]:
     """
     Télécharge un document officiel SIGFNE / DESPS (Reçu de préinscription ou Fiche cursus).
@@ -89,6 +90,7 @@ def download_sigfne_document(
         filename (str, optional): Nom personnalisé du fichier PDF.
         session (Session, optional): Session HTTP.
         timeout (int): Timeout en secondes.
+        url_override (str, optional): URL de contournement (ex: via iframe MEN-DELC).
 
     Returns:
         dict: Résultat avec statut, chemin du fichier PDF et métadonnées.
@@ -105,6 +107,10 @@ def download_sigfne_document(
 
     year_code = normalize_annee(annee)
     http = session or Session()
+    target_url = url_override or PAGE_URL
+    headers = DEFAULT_HEADERS.copy()
+    if url_override:
+        headers["Referer"] = url_override
 
     payload = {
         "matricule": code,
@@ -114,9 +120,9 @@ def download_sigfne_document(
 
     try:
         res = http.post(
-            PAGE_URL,
+            target_url,
             data=payload,
-            headers=DEFAULT_HEADERS,
+            headers=headers,
             verify=False,
             timeout=timeout,
         )
@@ -206,6 +212,7 @@ def get_sigfne_document(
     output_dir: str = DEFAULT_DOWNLOAD_DIR,
     session: Optional[Session] = None,
     timeout: int = 15,
+    url_override: Optional[str] = None,
 ) -> Dict[str, Any]:
     """
     Fonction unifiée pour interroger et télécharger un document SIGFNE.
@@ -217,4 +224,5 @@ def get_sigfne_document(
         output_dir=output_dir,
         session=session,
         timeout=timeout,
+        url_override=url_override,
     )

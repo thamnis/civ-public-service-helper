@@ -291,6 +291,24 @@ def download_seconde_orientation(
     return _download_doc(matricule, output_dir=output_dir, timeout=timeout)
 
 
+def _get_iframe_fallback_url(men_delc_path: str, timeout: int = 15) -> Optional[str]:
+    """
+    Extrait l'URL de secours (iframe) depuis le portail MEN-DELC.
+    """
+    import requests
+    from bs4 import BeautifulSoup
+    try:
+        res = requests.get(f"https://www.men-delc.org{men_delc_path}", verify=False, timeout=timeout)
+        if res.status_code == 200:
+            soup = BeautifulSoup(res.content, "html.parser")
+            iframe = soup.find("iframe")
+            if iframe and "src" in iframe.attrs:
+                return iframe["src"]
+    except Exception:
+        pass
+    return None
+
+
 def get_sigfne_document(
     matricule: str,
     doc_type: Literal["recu", "cursus", "cursusnew"] = "recu",
@@ -312,7 +330,24 @@ def get_sigfne_document(
         dict: Statut et chemin vers le document PDF téléchargé.
     """
     from sigfne_documents.scraper import download_sigfne_document as _dl_sigfne
-    return _dl_sigfne(matricule, doc_type=doc_type, annee=annee, output_dir=output_dir, timeout=timeout)
+    
+    res = _dl_sigfne(matricule, doc_type=doc_type, annee=annee, output_dir=output_dir, timeout=timeout)
+    if res.get("status") == "error":
+        # Tentative de fallback via iframe MEN-DELC
+        men_delc_path = "/views/impression-document-secondaire/"
+        if doc_type in ["recu"]: # Assuming primary is different but recu/cursus are generally secondary here
+             pass # adjust logic if we know it's primary vs secondary based on annee/doc_type
+        
+        fallback_url = _get_iframe_fallback_url(men_delc_path, timeout=timeout)
+        if fallback_url:
+            res_fallback = _dl_sigfne(
+                matricule, doc_type=doc_type, annee=annee, 
+                output_dir=output_dir, timeout=timeout, url_override=fallback_url
+            )
+            if res_fallback.get("status") != "error":
+                return res_fallback
+
+    return res
 
 
 def download_sigfne_document(
@@ -545,3 +580,55 @@ def get_location(id: str):
         None
     """
     pass
+
+
+# -------------------------------------------------------------------------
+# Nouveaux services: CAFOP et MEN-DELC
+# -------------------------------------------------------------------------
+
+def get_cafop_affectation(matricule: str, timeout: int = 15) -> dict:
+    """
+    Consulte l'affectation CAFOP d'un candidat à partir de son matricule.
+    """
+    from cafop_services.scraper import get_cafop_affectation as _cafop
+    return _cafop(matricule, timeout=timeout)
+
+
+def get_cafop_directors_directory(timeout: int = 15) -> dict:
+    """
+    Récupère l'annuaire des directeurs de CAFOP.
+    """
+    from cafop_services.scraper import get_cafop_directors_directory as _cafop_dir
+    return _cafop_dir(timeout=timeout)
+
+
+def get_textes_officiels(timeout: int = 15) -> dict:
+    """
+    Récupère tous les textes officiels (Arrêtés, Circulaires, etc.) depuis la DELC.
+    """
+    from men_delc_services.scraper import get_textes_officiels as _textes
+    return _textes(timeout=timeout)
+
+
+def get_drena_directory(timeout: int = 15) -> dict:
+    """
+    Récupère l'annuaire des DRENA depuis la DELC.
+    """
+    from men_delc_services.scraper import get_drena_directory as _drena
+    return _drena(timeout=timeout)
+
+
+def get_iepp_directory(timeout: int = 15) -> dict:
+    """
+    Récupère l'annuaire des IEPP depuis la DELC.
+    """
+    from men_delc_services.scraper import get_iepp_directory as _iepp
+    return _iepp(timeout=timeout)
+
+
+def get_primaire_nominations(type_nomination: Literal["directeur", "maitre_application"] = "directeur", timeout: int = 15) -> dict:
+    """
+    Récupère les décisions de nomination au primaire.
+    """
+    from men_delc_services.scraper import get_primaire_nominations as _primaire
+    return _primaire(type_nomination, timeout=timeout)
