@@ -151,7 +151,7 @@ def get_bts_result(matricule: str, birthdate: str, timeout: int = 15) -> dict:
     Returns:
         dict: Dictionnaire contenant le statut d'admission et les détails du candidat.
     """
-    from bts_result.scraper import get_bts_result as _get_bts_result
+    from legacy.bts_result.scraper import get_bts_result as _get_bts_result
     return _get_bts_result(matricule, birthdate, timeout=timeout)
 
 
@@ -173,7 +173,7 @@ def get_sixieme_affectation(
     Returns:
         dict: Dictionnaire complet avec identité élève, établissement d'affectation et détails PDF.
     """
-    from sixieme_affectation.scraper import get_sixieme_affectation as _get_sixieme_affectation
+    from legacy.sixieme_affectation.scraper import get_sixieme_affectation as _get_sixieme_affectation
     return _get_sixieme_affectation(
         matricule,
         download_pdf=download_pdf,
@@ -220,7 +220,7 @@ def get_infas_convocation(
     Returns:
         dict: Informations de convocation et chemin du fichier PDF si téléchargé.
     """
-    from infas_convocation.scraper import get_infas_convocation as _get_infas
+    from legacy.infas_convocation.scraper import get_infas_convocation as _get_infas
     return _get_infas(candidate_id, download_pdf=download_pdf, output_dir=output_dir, timeout=timeout)
 
 
@@ -262,7 +262,7 @@ def get_seconde_orientation(
     Returns:
         dict: Dictionnaire complet avec identité élève, établissement d'accueil, série et détails PDF.
     """
-    from seconde_orientation.scraper import get_seconde_orientation as _get_seconde
+    from legacy.seconde_orientation.scraper import get_seconde_orientation as _get_seconde
     return _get_seconde(
         matricule,
         download_pdf=download_pdf,
@@ -329,7 +329,7 @@ def get_sigfne_document(
     Returns:
         dict: Statut et chemin vers le document PDF téléchargé.
     """
-    from sigfne_documents.scraper import download_sigfne_document as _dl_sigfne
+    from legacy.sigfne_documents.scraper import download_sigfne_document as _dl_sigfne
     
     res = _dl_sigfne(matricule, doc_type=doc_type, annee=annee, output_dir=output_dir, timeout=timeout)
     if res.get("status") == "error":
@@ -393,7 +393,7 @@ def get_bts_calendar() -> dict:
     """
     Récupère le calendrier officiel de la session BTS (étapes et dates clés).
     """
-    from bts_result.scraper import get_bts_calendar as _get_cal
+    from legacy.bts_result.scraper import get_bts_calendar as _get_cal
     return _get_cal()
 
 
@@ -401,7 +401,7 @@ def get_bts_statistics() -> dict:
     """
     Récupère les statistiques nationales de la session du BTS (taux de réussite, inscrits, centres).
     """
-    from bts_result.scraper import get_bts_statistics as _get_stats
+    from legacy.bts_result.scraper import get_bts_statistics as _get_stats
     return _get_stats()
 
 
@@ -409,7 +409,7 @@ def get_bts_filieres(category: str = "all") -> dict:
     """
     Récupère la liste des filières industrielles et tertiaires du BTS (https://bts.mesrs-ci.net).
     """
-    from bts_result.scraper import get_bts_filieres as _get_fils
+    from legacy.bts_result.scraper import get_bts_filieres as _get_fils
     return _get_fils(category=category)
 
 
@@ -431,7 +431,7 @@ def verify_mesrs_payment(
     Returns:
         dict: Résultat de la vérification (statut, validité, détails).
     """
-    from mesrs_services.scraper import verify_mesrs_payment as _verify
+    from legacy.mesrs_services.scraper import verify_mesrs_payment as _verify
     return _verify(matricule_mesrs, code_paiement, numero_paiement, timeout=timeout)
 
 
@@ -439,7 +439,7 @@ def get_mesrs_dexco_services() -> dict:
     """
     Récupère le catalogue des actes d'examen et diplômes disponibles via DEXCO (https://inscription.mesrs-ci.net/dexco).
     """
-    from mesrs_services.scraper import get_mesrs_dexco_services as _dexco
+    from legacy.mesrs_services.scraper import get_mesrs_dexco_services as _dexco
     return _dexco()
 
 
@@ -447,7 +447,7 @@ def get_mesrs_announcements() -> dict:
     """
     Récupère les actualités et annonces flash officielles diffusées sur le portail MESRS.
     """
-    from mesrs_services.scraper import get_mesrs_announcements as _news
+    from legacy.mesrs_services.scraper import get_mesrs_announcements as _news
     return _news()
 
 
@@ -455,7 +455,7 @@ def get_bac_orientation_concours() -> dict:
     """
     Récupère la liste des concours d'orientation spéciaux post-BAC (https://bac.mesrs-ci.net/orientation/concours).
     """
-    from after_bac_orientation.scraper import get_bac_orientation_concours as _concours
+    from legacy.after_bac_orientation.scraper import get_bac_orientation_concours as _concours
     return _concours()
 
 
@@ -463,7 +463,7 @@ def get_bac_orientation_concours_admissibles(concours_id: str) -> dict:
     """
     Récupère la liste officielle des candidats admissibles classés par rang pour un concours post-BAC.
     """
-    from after_bac_orientation.scraper import get_bac_orientation_concours_admissibles as _admissibles
+    from legacy.after_bac_orientation.scraper import get_bac_orientation_concours_admissibles as _admissibles
     return _admissibles(concours_id)
 
 
@@ -471,7 +471,7 @@ def check_bac_orientation_payment(matricule: str) -> dict:
     """
     Vérifie le statut de paiement des frais d'orientation post-BAC d'un bachelier (https://bac.mesrs-ci.net).
     """
-    from after_bac_orientation.scraper import check_bac_orientation_payment as _payment
+    from legacy.after_bac_orientation.scraper import check_bac_orientation_payment as _payment
     return _payment(matricule)
 
 
@@ -479,7 +479,7 @@ def simulate_bac_orientation(matricule: str) -> dict:
     """
     Simule les filières et affectations possibles pour un bachelier selon ses notes.
     """
-    from after_bac_orientation.scraper import simulate_bac_orientation as _sim
+    from legacy.after_bac_orientation.scraper import simulate_bac_orientation as _sim
     return _sim(matricule)
 
 
@@ -562,7 +562,7 @@ def get_bac_orientation_result(matricule: str) -> dict:
     """
     Consulte le résultat de l'orientation d'un bachelier depuis bac.mesrs-ci.net.
     """
-    from after_bac_orientation.scraper import get_bac_orientation_result as _res
+    from legacy.after_bac_orientation.scraper import get_bac_orientation_result as _res
     return _res(matricule)
 
 
@@ -570,7 +570,7 @@ def download_bac_orientation_fiche(matricule: str, output_dir: str = os.path.joi
     """
     Télécharge la fiche officielle d'orientation au format PDF.
     """
-    from after_bac_orientation.scraper import download_bac_orientation_fiche as _dl
+    from legacy.after_bac_orientation.scraper import download_bac_orientation_fiche as _dl
     return _dl(matricule, output_dir=output_dir)
 
 
@@ -681,7 +681,7 @@ def get_cafop_affectation(matricule: str, timeout: int = 15) -> dict:
     """
     Consulte l'affectation CAFOP d'un candidat à partir de son matricule.
     """
-    from cafop_services.scraper import get_cafop_affectation as _cafop
+    from legacy.cafop_services.scraper import get_cafop_affectation as _cafop
     return _cafop(matricule, timeout=timeout)
 
 
